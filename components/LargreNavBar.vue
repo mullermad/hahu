@@ -1,9 +1,9 @@
 <template>
     <nav
-        class="flex md:hidden px-4 py-1 bg-opacity-10 backdrop-blur-md  items-center justify-between  duration-300 fixed top-0 left-0 w-full z-50 bg-gray-100 dark:bg-[#011812] transition-shadow">
+        class=" md:flex hidden px-0 py-1 bg-opacity-10 backdrop-blur-md  items-center justify-between duration-300 fixed top-0 left-0 w-full z-50 bg-gray-100 dark:bg-[#011812]  transition-shadow ">
 
         <!-- Logo -->
-        <div class=" flex items-between  space-x- ml-12 mt-1  ">
+        <div class=" flex items-center  space-x-3 ml-12 mt-1  ">
             <NuxtLink to="/">
                 <div><svg viewBox="0 0 270 50"
                         class="  lg:w-[120px] xl:w-[160px] 2xl:w-[220px] !w-[90px] !h-[18px]  bg-opacity-50 backdrop-blur-md dark:text-white"
@@ -35,22 +35,44 @@
                             d="M63.6638 39.1071C63.6638 42.4779 63.6465 45.8496 63.6777 49.2204C63.6837 49.8745 63.4388 49.9923 62.8556 49.9871C60.0906 49.9628 57.3249 49.9585 54.56 49.9871C53.9187 49.994 53.7171 49.8181 53.7206 49.1589C53.7456 43.6344 53.7353 38.1091 53.7335 32.5837C53.7335 30.8338 52.8621 29.9571 51.0993 29.9475C49.4839 29.9389 47.8668 29.9389 46.248 29.9475C44.5613 29.9579 43.6648 30.8138 43.6414 32.4746C43.6178 34.1604 43.6178 35.846 43.6414 37.5312C43.6058 37.8782 43.6491 38.2287 43.7681 38.5564C43.887 38.8842 44.0786 39.1808 44.3284 39.4239C44.5781 39.6671 44.8797 39.8504 45.2103 39.9603C45.5409 40.0701 45.8921 40.1036 46.2376 40.0583C47.7373 40.0583 49.2379 40.0756 50.7376 40.0496C51.2412 40.0401 51.4403 40.1683 51.4351 40.7132C51.4117 43.592 51.4204 46.4716 51.4281 49.3512C51.4281 49.7315 51.3693 49.9836 50.9029 49.9758C47.8818 49.9299 44.8512 50.0391 41.8431 49.8251C39.6945 49.5801 37.7026 48.5793 36.2223 47.0012C34.742 45.423 33.8696 43.3699 33.7605 41.2079C33.6814 37.0663 33.6814 32.923 33.7605 28.778C33.8901 26.5332 34.8362 24.4137 36.4202 22.8195C38.0042 21.2254 40.1164 20.267 42.358 20.1253C46.55 20.0161 50.7523 20.0222 54.9407 20.1192C57.0387 20.2391 59.0323 21.0744 60.5902 22.4861C62.1481 23.8978 63.1763 25.8009 63.5037 27.8788C63.6292 29.0873 63.6789 30.3025 63.6526 31.5173C63.6777 34.0495 63.6638 36.5783 63.6638 39.1071Z"
                             class="fill-[#444f60] dark:fill-[#fff]"></path>
                     </svg>
-                    <div class="text-gray-400 text-xs ml-0.5 mt-0.1">Primary</div>
+                    <div class="text-gray-400 text-[10px] ml-0.5 mt-0.1">Primary</div>
                 </div>
             </NuxtLink>
         </div>
 
-        <div class="flex flex-row justify-evenly items-center">
+        <!-- Navigations -->
+        <div
+            class="flex items-center space-x-5 mr-8 mt-1   md:flex-row space-y-4 md:space-y-0 md:space-x-6 p-4 md:p-0 ">
+            <NuxtLink to="/"
+                class="dark:text-white dark:hover:text-[#009688] font-sans font-semibold text-gray-500 text-sm hover:text-[#009688] focus:text-[#009688]">
+                Home
+            </NuxtLink>
+            <NuxtLink to="/#about"
+                class="dark:text-white dark:hover:text-[#009688] font-sans font-semibold text-gray-500 text-sm hover:text-[#009688] focus:text-[#009688]">
+                About
+            </NuxtLink>
+            <NuxtLink to="/#jobs"
+                class="dark:text-white dark:hover:text-[#009688] font-sans font-semibold text-gray-500 text-sm hover:text-[#009688] focus:text-[#009688]">
+                Jobs
+            </NuxtLink>
+            <NuxtLink to="/#vacancy"
+                class="dark:text-white dark:hover:text-[#009688] font-sans font-semibold text-gray-500 text-sm hover:text-[#009688] focus:text-[#009688]">
+                Post Vacancy
+            </NuxtLink>
+            <NuxtLink to="/#contact"
+                class="dark:text-white dark:hover:text-[#009688] font-sans font-semibold text-gray-500 text-sm hover:text-[#009688] focus:text-[#009688]">
+                Contact
+            </NuxtLink>
 
             <NuxtLink @click="toggleTheme"
-                class="dark:text-white text-gray-600 text-sm hover:text-[#009688] focus:text-[#009688] p-8 ">
-
-                <svg v-if="isDarkMode" xmlns="http://www.w3.org/2000/svg" width="32" height="20" viewBox="0 0 24 24">
+                class="dark:text-white dark:hover:text-[#009688] font-sans font-semibold text-gray-500 text-sm hover:text-[#009688] focus:text-[#009688]">
+                <svg v-if="isDarkMode" xmlns="http://www.w3.org/2000/svg" width="32" height="18" viewBox="0 0 24 24">
                     <path fill="currentColor"
                         d="M11 3V2q0-.425.288-.712T12 1t.713.288T13 2v1q0 .425-.288.713T12 4t-.712-.288T11 3m0 19v-1q0-.425.288-.712T12 20t.713.288T13 21v1q0 .425-.288.713T12 23t-.712-.288T11 22m11-9h-1q-.425 0-.712-.288T20 12t.288-.712T21 11h1q.425 0 .713.288T23 12t-.288.713T22 13M3 13H2q-.425 0-.712-.288T1 12t.288-.712T2 11h1q.425 0 .713.288T4 12t-.288.713T3 13m16.75-7.325l-.35.35q-.275.275-.687.275T18 6q-.275-.275-.288-.687t.263-.713l.375-.375q.275-.3.7-.3t.725.3t.288.725t-.313.725M6.025 19.4l-.375.375q-.275.3-.7.3t-.725-.3t-.288-.725t.313-.725l.35-.35q.275-.275.688-.275T6 18q.275.275.288.688t-.263.712m12.3.35l-.35-.35q-.275-.275-.275-.687T18 18q.275-.275.688-.287t.712.262l.375.375q.3.275.3.7t-.3.725t-.725.288t-.725-.313M4.6 6.025l-.375-.375q-.3-.275-.3-.7t.3-.725t.725-.288t.725.313l.35.35q.275.275.275.688T6 6q-.275.275-.687.288T4.6 6.025M12 18q-2.5 0-4.25-1.75T6 12t1.75-4.25T12 6t4.25 1.75T18 12t-1.75 4.25T12 18m0-2q1.675 0 2.838-1.162T16 12t-1.162-2.838T12 8T9.162 9.163T8 12t1.163 2.838T12 16m0-4" />
                 </svg>
-                <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                    stroke="currentColor" aria-hidden="true"
+
+                <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" width="32" height="32" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" aria-hidden="true"
                     class="w-4 h-4 transition-colors duration-200 outlineReactiveIcon hover:stroke-[#009688]">
                     <!-- Moon Icon -->
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -60,51 +82,22 @@
 
             </NuxtLink>
 
-            <!-- Hamburger Icon (shown on small screens) -->
-            <div class="lg:hidden mr-4">
-                <button @click="toggleMenu" class="text-gray-800 dark:text-white focus:outline-none">
-                    <svg v-if="!isMenuOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                    <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                        class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <!-- Mobile Menu (dropdown for small screens) -->
-        <div v-if="isMenuOpen"
-            class="lg:hidden fixed top-16 left-0 w-full flex flex-col items-start text-start bg-gray-100 dark:bg-[#011812] px-4 py-2 space-y-4 z-50">
 
-            <!-- Navigation Links -->
-            <NuxtLink to="/" @click="closeMenu" class="text-gray-800 dark:text-white hover:text-teal-600">Home
-            </NuxtLink>
-            <NuxtLink to="/about" @click="closeMenu" class="text-gray-800 dark:text-white hover:text-teal-600">About
-            </NuxtLink>
-            <NuxtLink to="/services" @click="closeMenu" class="text-gray-800 dark:text-white hover:text-teal-600">
-                Services</NuxtLink>
-            <NuxtLink to="/contact" @click="closeMenu" class="text-gray-800 dark:text-white hover:text-teal-600">Contact
-            </NuxtLink>
-            <hr class="border-t border-white w-full">
-
-            <!-- Login and Signup Links -->
+            <!-- Login and signup -->
             <NuxtLink to="/login"
-                class="dark:text-white text-white text-xs hover:text-gray-600 bg-[#009688] hover:bg-[#00BFA5] focus:text-white border rounded-md px-2 py-1 transition-all duration-200">
+                class="dark:text-white text-white text-xs  hover:text-gray-600 bg-[#009688] hover:bg-[#00BFA5]  focus:text-white border rounded-md px-1 py-1 transition-all duration-200">
                 Login
             </NuxtLink>
+
+
             <span class="dark:text-white font-semibold text-gray-600 text-sm">or</span>
             <NuxtLink to="/signup"
-                class="text-white text-xs hover:text-gray-600 bg-[#009688] hover:bg-[#00BFA5] focus:text-white border rounded-md px-2 py-1 transition-all duration-200">
+                class="text-white text-xs  hover:text-gray-600 bg-[#009688] hover:bg-[#00BFA5]  focus:text-white border rounded-md px-1 py-1 transition-all duration-200">
                 Sign up
             </NuxtLink>
-
         </div>
-    </nav>
 
+    </nav>
 
 </template>
 
@@ -127,7 +120,3 @@ emit('update-dark-mode', isDarkMode.value);
 watch(isDarkMode, (newValue) => emit('update-dark-mode', newValue));
 
 </script>
-
-<style scoped>
-/* Add custom styles for transition or responsiveness if needed */
-</style>

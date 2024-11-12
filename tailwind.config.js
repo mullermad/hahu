@@ -11,7 +11,17 @@ module.exports = {
   darkMode: "class",
 
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        secondary: "rgb(68, 79, 96)", // Custom color for text-secondary
+      },
+      fontFamily: {
+        roboto: ["Roboto"],
+      },
+      textOpacity: {
+        100: "1", // Setting opacity to 1 (100%)
+      },
+    },
   },
   plugins: [],
 };

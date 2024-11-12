@@ -1,6 +1,7 @@
 <template>
-    <div :class="isDarkMode ? 'bg-[#011812] text-white' : 'bg-gray-100 text-black'">
+    <div :class="isDarkMode ? 'bg-[#011812] text-white' : 'bg-gray-100 text-black'" class="font-roboto">
         <NavBar @update-dark-mode="handleDarkModeChange" />
+        <LargreNavBar @update-dark-mode="handleDarkModeChange" />
         <Hero />
         <CareerSector />
         <Services />
@@ -13,7 +14,7 @@
 
 
 <script setup>
-const isDarkMode = ref(false);
+const isDarkMode = ref(true);
 
 // Handler for the dark mode 
 function handleDarkModeChange(newDarkModeState) {

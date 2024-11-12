@@ -1,14 +1,14 @@
 <template>
     <div
-        class="dark:bg-[#121a26] bg-white flex flex-col items-left border border-transparent rounded-lg shadow-sm p-5 w-[20rem] m-3 h-[27rem] transition-shadow hover:shadow-xl hover:border-green-500">
+        class="dark:bg-[#121a26] bg-white flex flex-col items-left border border-transparent rounded-lg shadow-sm p-5 w-[20rem] m-3 h-[25rem] transition-shadow hover:shadow-xl hover:border-green-500">
         <img :src="image" alt="Sector Image" class="w-45 h-40 object-cover rounded-full mb-8 mx-auto" />
         <h2 class="text-lg font-bold text-left mb-2 ">{{ ServiceName }}</h2>
-        <p class="text-gray-600 text-sm dark:text-white text-left leading-relaxed mb-2">
+        <p class="text-gray-600 text-xs dark:text-white text-left leading-relaxed mb-2">
             {{ Description }}
 
         </p>
         <div class="flex justify-end">
-            <button class="text-[#009688] font-bold text-sm hover:text-[#009688] mt-3 flex items-center">
+            <button class="text-[#009688] hover:text-[#82d3cb] font-bold text-xs  mt-3 flex items-center">
                 Explore more
                 <svg class="w-4 h-4 ml-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                     <path

@@ -1,36 +1,39 @@
 <template>
     <footer class="dark:bg-[#121a26] bg-white dark:text-white text-gray-800 shadow-md py-2 mt-5">
         <div class="container mx-auto px-4 font-serif">
-            <div class="flex  flex-row space-x-32 justify-between">
+            <div class="flex flex-col md:flex-row md:space-x-8 lg:space-x-16 xl:space-x-20 justify-between">
+                <div class="flex flex-row  sm:flex-row items-center  ">
+                    <!-- Get Started Section -->
+                    <div class="mr-8  ">
+                        <h3 class="text-md font-semibold mb-2 mt-8 border-b text-gray-600 dark:text-white ">
+                            Get_Started</h3>
+                        <ul class="text-gray-400 flex flex-col space-y-1 space-x-0 text-sm">
+                            <li><a href="#"
+                                    class=" dark:hover:text-gray-400 text-gray-800  dark:text-white hover:text-[#009688]">SignUp</a>
+                            </li>
+                            <li><a href="#"
+                                    class=" dark:hover:text-gray-400 text-gray-800 dark:text-white hover:text-[#009688]">Login</a>
+                            </li>
+                        </ul>
+                    </div>
 
-                <!-- Get Started Section -->
-                <div>
-                    <h3 class="text-md font-semibold mb-4  border-b text-gray-800 dark:text-white ">
-                        Get_Started</h3>
-                    <ul class="text-gray-400 flex flex-col space-y-0 space-x-0 text-sm">
-                        <li><a href="#"
-                                class="hover:text-gray-200 dark:hover:text-gray-400 text-gray-800 dark:text-white">SignUp</a>
-                        </li>
-                        <li><a href="#"
-                                class="hover:text-gray-200 dark:hover:text-gray-400 text-gray-800 dark:text-white">Login</a>
-                        </li>
-                    </ul>
+
+                    <!-- Quick Links Section -->
+                    <div class="ml-8">
+                        <h3 class="text-md font-bold mb-1 mt-8 underline text-gray-600 dark:text-white pb-1">Quick_Links
+                        </h3>
+                        <ul class="text-gray-400 flex flex-col space-y-2 text-sm">
+                            <li><a href="#" class=" text-gray-800 dark:text-white hover:text-[#009688]">HahuJobs IO</a>
+                            </li>
+                            <li><a href="#" class=" text-gray-800 dark:text-white hover:text-[#009688]">Minab Tech</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-
-
-                <!-- Quick Links Section -->
-                <div>
-                    <h3 class="text-md font-bold mb-4 underline text-gray-800 dark:text-white pb-2">Quick_Links</h3>
-                    <ul class="text-gray-400 flex flex-col space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-gray-200 text-gray-800 dark:text-white">HahuJobs IO</a></li>
-                        <li><a href="#" class="hover:text-gray-200 text-gray-800 dark:text-white">Minab Tech</a></li>
-                    </ul>
-                </div>
-
                 <!-- About HahuJobs Section -->
                 <div>
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" class="w-[197px] h-[74px]"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" class="w-[147px] h-[74px] mb-1"
                         viewBox="0 0 857.8 331.8" style="enable-background:new 0 0 857.8 331.8;" xml:space="preserve">
                         <title>Minab Logo</title>
                         <desc>This is the official logo of Minab IT Solutions</desc>
@@ -77,7 +80,8 @@
                                 <path class="fill-[#49045D] dark:fill-[#fff]"
                                     d="M691.3,247.3h-9.7v41.5h-4.6v-41.5h-9.9v-4.1h24.1V247.3z"></path>
                                 <path class="fill-[#49045D] dark:fill-[#fff]"
-                                    d="M728.8,288.8h-17v-4.1h6.2v-37.4h-6.2v-4.1h17v4.1h-6.2v37.4h6.2V288.8z"></path>
+                                    d="M728.8,288.8h-17v-4.1h6.2v-37.4h-6.2v-4.1h17v4.1h-6.2v37.4h6.2V288.8z">
+                                </path>
                                 <path class="fill-[#49045D] dark:fill-[#fff]" d="M774,266c0,5.9-0.7,11.3-2.2,16.2c-1.5,4.9-5,7.3-10.5,7.3c-4.4,0-7.6-1.9-9.6-5.6c-2-3.7-3-9.7-3-17.9
                                     c0-6.3,0.8-11.7,2.4-16.4c1.6-4.7,5-7,10.3-7c4.3,0,7.5,1.9,9.6,5.6C773,251.9,774,257.8,774,266z M769.3,266
                                     c0-6.3-0.4-11-1.3-14.2c-0.8-3.2-3-4.9-6.6-4.9c-3.5,0-5.7,1.8-6.6,5.3c-0.9,3.5-1.3,8.1-1.3,13.8c0,6.7,0.5,11.5,1.6,14.6
@@ -100,18 +104,19 @@
                                 c-6.1,52.8-33.7,74-33.7,74V95.3C228.6,95.3,268.4,128.4,262.3,181.2z"></path>
                         </g>
                     </svg>
-                    <p class="text-sm hover:text-gray-200 text-gray-800 dark:text-white  " d> HaHuJobs is
+                    <p class="text-sm  text-gray-800 dark:text-white  " d> HaHuJobs is
                         a cloud based product owned and manged by a technology
-                        consulting firm called Minab IT solutions PLC. Minab was founded in 2014 and has an extensive
+                        consulting firm called Minab IT solutions PLC. Minab was founded in 2014 and has an
+                        extensive
                         experience in software development for the past nine years. </p>
                 </div>
 
 
                 <!-- Powered by Section -->
                 <div class="mt-5 md:mt-0 z-20">
-                    <p class="font-body font-medium text-sm md:text-lg leading-9 text-secondary dark:text-secondary-8">
+                    <p class=" font-medium ml-2 text-xs md:text-lg leading-8 text-secondary dark:text-secondary">
                         Powered by </p>
-                    <svg viewBox="0 0 270 50" class="w-[150px] h-[50px] lg:w-[200px] 2xl:w-[270px] xl:w-[240px]"
+                    <svg viewBox="0 0 270 50" class="w-[130px] h-[40px] lg:w-[200px] 2xl:w-[270px] xl:w-[240px]"
                         fill="none" xmlns="http://www.w3.org/2000/svg">
                         <title>HaHuJobs Logo</title>
                         <desc>This is the official logo of HaHuJobs</desc>
@@ -140,8 +145,8 @@
                             d="M63.6638 39.1071C63.6638 42.4779 63.6465 45.8496 63.6777 49.2204C63.6837 49.8745 63.4388 49.9923 62.8556 49.9871C60.0906 49.9628 57.3249 49.9585 54.56 49.9871C53.9187 49.994 53.7171 49.8181 53.7206 49.1589C53.7456 43.6344 53.7353 38.1091 53.7335 32.5837C53.7335 30.8338 52.8621 29.9571 51.0993 29.9475C49.4839 29.9389 47.8668 29.9389 46.248 29.9475C44.5613 29.9579 43.6648 30.8138 43.6414 32.4746C43.6178 34.1604 43.6178 35.846 43.6414 37.5312C43.6058 37.8782 43.6491 38.2287 43.7681 38.5564C43.887 38.8842 44.0786 39.1808 44.3284 39.4239C44.5781 39.6671 44.8797 39.8504 45.2103 39.9603C45.5409 40.0701 45.8921 40.1036 46.2376 40.0583C47.7373 40.0583 49.2379 40.0756 50.7376 40.0496C51.2412 40.0401 51.4403 40.1683 51.4351 40.7132C51.4117 43.592 51.4204 46.4716 51.4281 49.3512C51.4281 49.7315 51.3693 49.9836 50.9029 49.9758C47.8818 49.9299 44.8512 50.0391 41.8431 49.8251C39.6945 49.5801 37.7026 48.5793 36.2223 47.0012C34.742 45.423 33.8696 43.3699 33.7605 41.2079C33.6814 37.0663 33.6814 32.923 33.7605 28.778C33.8901 26.5332 34.8362 24.4137 36.4202 22.8195C38.0042 21.2254 40.1164 20.267 42.358 20.1253C46.55 20.0161 50.7523 20.0222 54.9407 20.1192C57.0387 20.2391 59.0323 21.0744 60.5902 22.4861C62.1481 23.8978 63.1763 25.8009 63.5037 27.8788C63.6292 29.0873 63.6789 30.3025 63.6526 31.5173C63.6777 34.0495 63.6638 36.5783 63.6638 39.1071Z"
                             class="fill-[#444f60] dark:fill-[#fff]"></path>
                     </svg>
-                    <div class="mt-4">
-                        <svg width="176" height="18" viewBox="0 0 176 18" fill="none"
+                    <div class="mt-4 ml-4">
+                        <svg width="156" height="16" viewBox="0 0 176 18" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M10.4447 16.7302H7.52059L4.7646 8.25848C4.34731 8.67851 3.98918 9.54443 3.69023 10.8562C3.39127 12.1616 3.111 14.1195 2.84942 16.7302H0C0.205532 14.4426 0.473346 12.5622 0.803442 11.0889C1.13354 9.61551 1.5446 8.44911 2.03663 7.58966C2.52866 6.73021 3.15771 6.13247 3.92379 5.79645L2.83073 2.55897H5.78291L10.4447 16.7302Z"
@@ -191,10 +196,10 @@
             <div class="mt-6 border-t border-gray-300 pt-4 flex justify-between items-center text-sm text-gray-500">
                 <div>
                     <div class="flex justify-between">
-                        <ul class="text-gray-400  mr-4 ">
-                            <li><a href="#" class="hover:text-gray-200">Privacy Policy</a></li>
+                        <ul class="text-gray-400 dark:text-gray-200  mr-4 ">
+                            <li><a href="#" class="">Privacy Policy</a></li>
                         </ul>
-                        <div class="ml-4">
+                        <div class="text-gray-400 dark:text-gray-200  ml-4">
                             &copy; 2020 - 2024 HaHuJobs. All rights reserved.
                         </div>
                     </div>
@@ -203,7 +208,7 @@
                 </div>
 
                 <div class="social-links mt-4">
-                    <ul class="flex mt-4 space-x-4 justify-center lg:justify-start">
+                    <ul class="flex mt-4 space-x-7 justify-center lg:justify-start">
                         <li><a href="social_link" target="_blank" class="social-icon">
                                 <img :src="facebookcircularImage" alt="Facebook" class="w-4 h-4" />
                             </a></li>

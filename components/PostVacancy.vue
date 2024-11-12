@@ -3,13 +3,16 @@
         <h1 class="dark:text-white text-3xl font-extrabold text-gray-600 mb-3 font-sans">
             Post Vacancy
         </h1>
-        <p class="dark:text-white  font-bold text-gray-500 mb-6 font-robot w-[780px] mx-auto text-sm">
+        <!-- class="dark:text-white text-sm sm:text-base font-bold text-gray-500 mb-3 font-robot text-center max-w-full -->
+        <!-- sm:max-w-[500px] md:max-w-[600px] lg:max-w-[700px] mx-auto px-4" -->
+        <p
+            class="dark:text-white  text-xs text-gray-500 mb-3 font-robot text-center max-w-full sm:max-w-[500px] md:max-w-[600px] lg:max-w-[700px]  px-4 font-bold   font-robot w-[780px] mx-auto ">
             HaHuJobs offers dedicated enterprise cloud services for a full human resource management platform with an
             affordable price package. Posting a vacancy is completely free, and only requires following the below listed
             steps.
         </p>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 w-full max-w-screen-lg">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 px-5 w-full max-w-screen-lg">
             <div class="dark:bg-gray-800 p-6 rounded-lg flex flex-col justify-between">
                 <div class="flex items-center justify-center bg-[#7addd6] text-white w-8 h-8 rounded-full mb-3 mx-auto">
                     <h2 class="text-sm font-bold">1</h2>
@@ -54,7 +57,8 @@
         </div>
 
         <div class="mt-6">
-            <button class="px-3 py-1 bg-[#009688] text-white rounded-lg text-sm">
+            <button
+                class="px-4 py-2 bg-[#009688] hover:bg-[#8fcec8] hover:text-secondary text-white rounded-md text-xs">
                 Post Vacancy
             </button>
         </div>
