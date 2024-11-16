@@ -6,8 +6,8 @@
         <div class="flex gap-[3rem] items-center justify-center">
             <!-- Event List -->
             <div v-for="(event, index) in visibleEvents" :key="index" class="flex justify-center">
-                <Event :image="event.image" News="HahuJobs News" Date="29 Oct 2024" :ServiceName="event.ServiceName"
-                    :Description="event.Description" />
+                <Event :image="event.image" News="HahuJobs News" Date="29 september 2024"
+                    :ServiceName="event.ServiceName" :Description="event.Description" />
             </div>
         </div>
 
@@ -26,11 +26,15 @@
 
         <div class="flex justify-center mt-6">
             <button
-                class="bg-[#009688] hover:bg-[#a1d1cc] hover:text-black text-white font-bold text-sm mt-3 flex items-center justify-center h-10 w-28 rounded-md">
+                class="bg-[#009688] transition duration-700 ease-in-out hover:bg-[#a1d1cc] hover:text-gray-700 text-white  text-[0.68rem] mt-3 flex items-center justify-center h-8 w-28 rounded-md">
                 More blogs
-                <svg class="w-4 h-4 ml-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path
-                        d="M12.293 5.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 12H3a1 1 0 110-2h12.586l-3.293-3.293a1 1 0 010-1.414z" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" width="12" height="22" viewBox="0 0 20 20">
+                    <g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+                        <path
+                            d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h5a.75.75 0 0 1 0 1.5h-5Z" />
+                        <path
+                            d="M6.194 12.753a.75.75 0 0 0 1.06.053L16.5 4.44v2.81a.75.75 0 0 0 1.5 0v-4.5a.75.75 0 0 0-.75-.75h-4.5a.75.75 0 0 0 0 1.5h2.553l-9.056 8.194a.75.75 0 0 0-.053 1.06Z" />
+                    </g>
                 </svg>
             </button>
         </div>
@@ -44,11 +48,11 @@ import hahujobsemploymentImage from '@/assets/img/hahujobs-employment.jpg';
 import vacancy_post_ps61tzImage from '@/assets/img/vacancy_post_ps61tz.jpg';
 
 const events = [
-    { image: stemeduImage, ServiceName: 'HaHuJobs to Partner with Humber...', Description: 'HaHuJobs will begin project implementation for the STEM Education for Empowerment Project (STEEP) in Ethiopia to provide vital education and training, mentorship...' },
-    { image: hahujobsemploymentImage, ServiceName: 'HaHuJobs Addis Ababa Employment...', Description: 'We are launching our employment center services soon!! The establishment is intended to serve jobseekers via scheduled visits ...' },
-    { image: vacancy_post_ps61tzImage, ServiceName: 'How can you post a vacancy on HaHuJobs?', Description: 'Take advantage of every job opportunity using our multi-platform vacancy notification services for jobseekers.' },
-    { image: vacancy_post_ps61tzImage, ServiceName: 'Post a Job Opportunity', Description: 'Post job opportunities using our multi-platform notification services for jobseekers.' },
-    { image: vacancy_post_ps61tzImage, ServiceName: 'Career Guidance', Description: 'Get career advice and job-seeking tips to help you land your next role.' },
+    { image: stemeduImage, ServiceName: 'HaHuJobs to Partner with Humber Polytechnic to Empower Adolescent Girls in Ethiopia', Description: 'HaHuJobs will begin project implementation for the STEM Education for Empowerment Project (STEEP) in Ethiopia to provide vital education and training, mentorship...' },
+    { image: hahujobsemploymentImage, ServiceName: 'HaHuJobs Addis Ababa Employment Center Launch', Description: 'We are launching our employment center services soon!! The establishment is intended to serve jobseekers via scheduled visits ...' },
+    { image: vacancy_post_ps61tzImage, ServiceName: 'How can you post a vacancy on HaHuJobs?', Description: 'We are launching our employment center services soon!! The establishment is intended to serve jobseekers via scheduled visits ...' },
+    { image: vacancy_post_ps61tzImage, ServiceName: 'Post a Job Opportunity', Description: 'We are launching our employment center services soon!! The establishment is intended to serve jobseekers via scheduled visits ...' },
+    { image: vacancy_post_ps61tzImage, ServiceName: 'Career Guidance', Description: 'We are launching our employment center services soon!! The establishment is intended to serve jobseekers via scheduled visits ...' },
 
 ];
 

@@ -1,5 +1,6 @@
 <template>
-    <div :class="isDarkMode ? 'bg-[#011812] text-white' : 'bg-gray-100 text-black'" class="font-roboto">
+    <div :class="isDarkMode ? 'bg-[#011812] text-white' : 'bg-gray-100 text-black'"
+        class="font-roboto h-screen overflow-y-scroll scrollbar-thin ">
         <NavBar @update-dark-mode="handleDarkModeChange" />
         <LargreNavBar @update-dark-mode="handleDarkModeChange" />
         <Hero />

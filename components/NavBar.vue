@@ -1,9 +1,9 @@
 <template>
     <nav
-        class="flex md:hidden px-4 py-1 bg-opacity-10 backdrop-blur-md  items-center justify-between  duration-300 fixed top-0 left-0 w-full z-50 bg-gray-100 dark:bg-[#011812] transition-shadow">
+        class="flex md:hidden px-1 py-2  bg-opacity-10 backdrop-blur-md  items-center justify-between  duration-300 fixed top-0 left-0 w-full z-50 bg-gray-100 dark:bg-[#011812] transition-shadow dark:border-none border-b ">
 
         <!-- Logo -->
-        <div class=" flex items-between  space-x- ml-12 mt-1  ">
+        <div class=" flex items-between  ml-1  ">
             <NuxtLink to="/">
                 <div><svg viewBox="0 0 270 50"
                         class="  lg:w-[120px] xl:w-[160px] 2xl:w-[220px] !w-[90px] !h-[18px]  bg-opacity-50 backdrop-blur-md dark:text-white"
@@ -40,18 +40,18 @@
             </NuxtLink>
         </div>
 
-        <div class="flex flex-row justify-evenly items-center">
+        <div class="flex flex-row justify-end items-center">
 
             <NuxtLink @click="toggleTheme"
-                class="dark:text-white text-gray-600 text-sm hover:text-[#009688] focus:text-[#009688] p-8 ">
+                class="dark:text-white text-gray-600 text-sm hover:text-[#009688] focus:text-[#009688] py-5 mb-1 px-3 ">
 
-                <svg v-if="isDarkMode" xmlns="http://www.w3.org/2000/svg" width="32" height="20" viewBox="0 0 24 24">
+                <svg v-if="isDarkMode" xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 24 24">
                     <path fill="currentColor"
                         d="M11 3V2q0-.425.288-.712T12 1t.713.288T13 2v1q0 .425-.288.713T12 4t-.712-.288T11 3m0 19v-1q0-.425.288-.712T12 20t.713.288T13 21v1q0 .425-.288.713T12 23t-.712-.288T11 22m11-9h-1q-.425 0-.712-.288T20 12t.288-.712T21 11h1q.425 0 .713.288T23 12t-.288.713T22 13M3 13H2q-.425 0-.712-.288T1 12t.288-.712T2 11h1q.425 0 .713.288T4 12t-.288.713T3 13m16.75-7.325l-.35.35q-.275.275-.687.275T18 6q-.275-.275-.288-.687t.263-.713l.375-.375q.275-.3.7-.3t.725.3t.288.725t-.313.725M6.025 19.4l-.375.375q-.275.3-.7.3t-.725-.3t-.288-.725t.313-.725l.35-.35q.275-.275.688-.275T6 18q.275.275.288.688t-.263.712m12.3.35l-.35-.35q-.275-.275-.275-.687T18 18q.275-.275.688-.287t.712.262l.375.375q.3.275.3.7t-.3.725t-.725.288t-.725-.313M4.6 6.025l-.375-.375q-.3-.275-.3-.7t.3-.725t.725-.288t.725.313l.35.35q.275.275.275.688T6 6q-.275.275-.687.288T4.6 6.025M12 18q-2.5 0-4.25-1.75T6 12t1.75-4.25T12 6t4.25 1.75T18 12t-1.75 4.25T12 18m0-2q1.675 0 2.838-1.162T16 12t-1.162-2.838T12 8T9.162 9.163T8 12t1.163 2.838T12 16m0-4" />
                 </svg>
                 <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                     stroke="currentColor" aria-hidden="true"
-                    class="w-4 h-4 transition-colors duration-200 outlineReactiveIcon hover:stroke-[#009688]">
+                    class="w-5 h-4 transition-colors duration-200 outlineReactiveIcon hover:stroke-[#009688]">
                     <!-- Moon Icon -->
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
@@ -60,11 +60,11 @@
 
             </NuxtLink>
 
-            <!-- Hamburger Icon (shown on small screens) -->
-            <div class="lg:hidden mr-4">
-                <button @click="toggleMenu" class="text-gray-800 dark:text-white focus:outline-none">
+            <!-- Hamburger Icon  -->
+            <div class="lg:hidden">
+                <button @click="toggleMenu" class="text-gray-600 dark:text-white focus:outline-none">
                     <svg v-if="!isMenuOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" class="w-6 h-6">
+                        stroke="currentColor" class="w-5 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
@@ -76,15 +76,24 @@
                 </button>
             </div>
         </div>
-        <!-- Mobile Menu (dropdown for small screens) -->
+        <!--  Menu dropdown for small scrrounded-fulleens -->
         <div v-if="isMenuOpen"
-            class="lg:hidden fixed top-16 left-0 w-full flex flex-col items-start text-start bg-gray-100 dark:bg-[#011812] px-4 py-2 space-y-4 z-50">
+            class="lg:hidden fixed top-16 left-0 w-full flex flex-col items-start text-start bg-gray-100 dark:bg-[#011812] px-4 py-2 space-y-4 z-50 ">
 
             <!-- Navigation Links -->
             <NuxtLink to="/" @click="closeMenu" class="text-gray-800 dark:text-white hover:text-teal-600">Home
             </NuxtLink>
             <NuxtLink to="/about" @click="closeMenu" class="text-gray-800 dark:text-white hover:text-teal-600">About
             </NuxtLink>
+            <NuxtLink @click.prevent="openJobsModal"
+                class="dark:text-white dark:hover:text-[#009688] font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs hover:text-[#009688] focus:text-[#009688]">
+
+                Jobs
+            </NuxtLink>
+
+            <!-- Modal Component -->
+            <JobsModal :isOpen="isJobsModalOpen" @close="closeJobsModal" @viewAll="handleViewAll" />
+
             <NuxtLink to="/services" @click="closeMenu" class="text-gray-800 dark:text-white hover:text-teal-600">
                 Services</NuxtLink>
             <NuxtLink to="/contact" @click="closeMenu" class="text-gray-800 dark:text-white hover:text-teal-600">Contact
@@ -112,6 +121,19 @@
 
 const isDarkMode = ref(true);
 const isMenuOpen = ref(false);
+const isJobsModalOpen = ref(false)
+
+const openJobsModal = () => {
+    isJobsModalOpen.value = true
+}
+
+const closeJobsModal = () => {
+    isJobsModalOpen.value = false
+}
+
+const handleViewAll = () => {
+    console.log('View All clicked')
+}
 const toggleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value; // Toggle the menu open state
 }
@@ -127,7 +149,3 @@ emit('update-dark-mode', isDarkMode.value);
 watch(isDarkMode, (newValue) => emit('update-dark-mode', newValue));
 
 </script>
-
-<style scoped>
-/* Add custom styles for transition or responsiveness if needed */
-</style>

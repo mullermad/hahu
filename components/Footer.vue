@@ -1,18 +1,20 @@
 <template>
     <footer class="dark:bg-[#121a26] bg-white dark:text-white text-gray-800 shadow-md py-2 mt-5">
-        <div class="container mx-auto px-4 font-serif">
-            <div class="flex flex-col md:flex-row md:space-x-8 lg:space-x-16 xl:space-x-20 justify-between">
+        <div class="container mx-auto px-3 font-serif">
+            <div class="flex flex-col md:flex-row md:space-x-8 lg:space-x-14 xl:space-x-16 justify-between">
                 <div class="flex flex-row  sm:flex-row items-center  ">
                     <!-- Get Started Section -->
-                    <div class="mr-8  ">
-                        <h3 class="text-md font-semibold mb-2 mt-8 border-b text-gray-600 dark:text-white ">
+                    <div class="mr-12   ">
+                        <h3
+                            class="text-[0.9rem] line-clamp-1 font-roboto font-black mb-2 underline mt-8  text-gray-600 dark:text-white ">
                             Get_Started</h3>
-                        <ul class="text-gray-400 flex flex-col space-y-1 space-x-0 text-sm">
+                        <ul class="text-gray-800 flex flex-col space-y-1 space-x-0 text-sm">
                             <li><a href="#"
-                                    class=" dark:hover:text-gray-400 text-gray-800  dark:text-white hover:text-[#009688]">SignUp</a>
+                                    class=" dark:hover:text-gray-400 font-roboto text-[0.85rem] font-lightbold text-gray-800  dark:text-white hover:text-[#009688]">Sign
+                                    up</a>
                             </li>
                             <li><a href="#"
-                                    class=" dark:hover:text-gray-400 text-gray-800 dark:text-white hover:text-[#009688]">Login</a>
+                                    class=" dark:hover:text-gray-400 font-roboto text-[0.85rem] font-lightbold text-gray-800 dark:text-white hover:text-[#009688]">Login</a>
                             </li>
                         </ul>
                     </div>
@@ -20,12 +22,17 @@
 
                     <!-- Quick Links Section -->
                     <div class="ml-8">
-                        <h3 class="text-md font-bold mb-1 mt-8 underline text-gray-600 dark:text-white pb-1">Quick_Links
+                        <h3
+                            class="text-[0.9rem] line-clamp-1 font-roboto font-black mb-2 underline mt-8  text-gray-600 dark:text-white ">
+                            Quick_Links
                         </h3>
                         <ul class="text-gray-400 flex flex-col space-y-2 text-sm">
-                            <li><a href="#" class=" text-gray-800 dark:text-white hover:text-[#009688]">HahuJobs IO</a>
+                            <li><a href="#"
+                                    class="text-[0.85rem] font-roboto font-lightbold text-gray-800 line-clamp-1  dark:text-white hover:text-[#009688]">HahuJobsIO</a>
                             </li>
-                            <li><a href="#" class=" text-gray-800 dark:text-white hover:text-[#009688]">Minab Tech</a>
+                            <li><a href="#"
+                                    class="text-[0.83rem] font-roboto font-lightbold text-gray-800 dark:text-white hover:text-[#009688]">Minab
+                                    Tech</a>
                             </li>
                         </ul>
                     </div>
@@ -104,7 +111,7 @@
                                 c-6.1,52.8-33.7,74-33.7,74V95.3C228.6,95.3,268.4,128.4,262.3,181.2z"></path>
                         </g>
                     </svg>
-                    <p class="text-sm  text-gray-800 dark:text-white  " d> HaHuJobs is
+                    <p class="text-[0.85rem] font-lightbold  font-roboto text-gray-700 dark:text-white  " d> HaHuJobs is
                         a cloud based product owned and manged by a technology
                         consulting firm called Minab IT solutions PLC. Minab was founded in 2014 and has an
                         extensive

@@ -14,7 +14,7 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 px-5 w-full max-w-screen-lg">
             <div class="dark:bg-gray-800 p-6 rounded-lg flex flex-col justify-between">
-                <div class="flex items-center justify-center bg-[#7addd6] text-white w-8 h-8 rounded-full mb-3 mx-auto">
+                <div class="flex items-center justify-center bg-[#7fcac5] text-white w-8 h-8 rounded-full mb-3 mx-auto">
                     <h2 class="text-sm font-bold">1</h2>
                 </div>
                 <button class="dark:text-white px-6 py-2 rounded-lg mb-3 text-sm text-gray-700">
@@ -28,7 +28,7 @@
             </div>
 
             <div class="dark:bg-gray-800 p-6 rounded-lg flex flex-col justify-between">
-                <div class="flex items-center justify-center bg-[#7addd6] text-white w-8 h-8 rounded-full mb-3 mx-auto">
+                <div class="flex items-center justify-center bg-[#7fcac5] text-white w-8 h-8 rounded-full mb-3 mx-auto">
                     <h2 class="text-sm font-bold">2</h2>
                 </div>
                 <button class="dark:text-white px-6 py-2 rounded-lg mb-3 text-sm text-gray-700">
@@ -42,7 +42,7 @@
             </div>
 
             <div class="dark:bg-gray-800 p-6 rounded-lg flex flex-col justify-between">
-                <div class="flex items-center justify-center bg-[#7addd6] text-white w-8 h-8 rounded-full mb-3 mx-auto">
+                <div class="flex items-center justify-center bg-[#7fcac5] text-white w-8 h-8 rounded-full mb-3 mx-auto">
                     <h2 class="text-sm font-bold">3</h2>
                 </div>
                 <button class="dark:text-white px-6 py-2 rounded-lg mb-3 text-gray-700 text-sm">
@@ -58,7 +58,7 @@
 
         <div class="mt-6">
             <button
-                class="px-4 py-2 bg-[#009688] hover:bg-[#8fcec8] hover:text-secondary text-white rounded-md text-xs">
+                class="px-4 py-2 bg-[#009688] hover:bg-[#8fcec8] transition duration-700 ease-in-out hover:text-secondary text-white rounded-md text-xs">
                 Post Vacancy
             </button>
         </div>

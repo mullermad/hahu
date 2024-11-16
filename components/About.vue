@@ -3,11 +3,11 @@
         <div
             class="dark:text-white  lg:ml-24 mr-auto flex flex-col lg:flex-row items-center lg:items-start justify-between space-y-4 space-x-8 lg:space-y-0 max-w-screen-lg">
             <div class="text-content lg:w-1/2 lg:pr-8 text-center lg:text-left">
-                <h2 class="dark:text-white text-4xl font-extrabold text-secondary mb-1 p-2 ">
+                <h2 class="dark:text-white text-4xl font-black text-gray-700 mb-2 p-1 ">
                     What is unique about HaHuJobs
                 </h2>
                 <div
-                    class="dark:text-white text-gray-500 leading-relaxed   text-sm font-semibold   mb-6 max-w-full sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto px-4">
+                    class="dark:text-white text-gray-600 leading-relaxed   text-[0.75rem]  font-semibold   mb-6 max-w-full sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto px-4">
                     HaHuJobs Primary services are deployments targeting the needs of the Ethiopian jobseeker, with both
                     online and assisted models. The platform is a tool intended to assist the process of looking for a
                     job
@@ -25,10 +25,10 @@
                     in terms of skill, knowledge, ability, and expected activities.
                 </div>
                 <button
-                    class="text-white bg-[#009688] hover:bg-[#8fcec8] hover:text-secondary text-xs ml-24 lg:ml-2 mt-3 md:mt-4 p-1 md:p-2 lg:p-2 flex   items-center border rounded-md">
-                    Explore more
-                    <span class=" lg:justify-start"> <svg class="w-2 h-2 ml-1 md:w-4 md:h-4 lg:w-5 lg:h-5"
-                            fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    class="text-white bg-[#009688] hover:bg-[#8fcec8] hover:text-secondary text-[0.62rem]  ml-24 lg:ml-2 mt-3 md:mt-4 p-1 md:p-2 lg:px-3 lg:py-1 font-semibold flex transition duration-700 ease-in-out items-center border rounded-md">
+                    Explore more <span class=" lg:justify-start">
+                        <svg class="w-2 h-2 ml-1 md:w-4 md:h-4 lg:w-4 lg:h-5" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <path
                                 d="M12.293 5.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 12H3a1 1 0 110-2h12.586l-3.293-3.293a1 1 0 010-1.414z" />
                         </svg></span>
@@ -38,8 +38,8 @@
 
                 <div class="social-links mt-4">
 
-                    <h3 class="dark:text-white text-sm lg:ml-2 text-gray-600 font-bold ">Get Social with Us!</h3>
-                    <ul class="flex mt-4 space-x-4 justify-center lg:ml-2 lg:justify-start">
+                    <h3 class="dark:text-white text-sm lg:ml-2 text-gray-600 font-semibold ">Get Social with Us!</h3>
+                    <ul class="flex mt-4 space-x-5 justify-center lg:ml-2 lg:justify-start">
                         <li><a href="social_link" target="_blank" class="social-icon">
                                 <img :src="facebookcircularImage" alt="Facebook" class="w-4 h-4" />
                             </a></li>

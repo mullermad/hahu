@@ -2,7 +2,7 @@
     <div
         class="dark:bg-[#121a26] bg-white flex flex-col items-left border border-transparent rounded-lg shadow-sm p-5 w-[20rem] m-3 h-[25rem] transition-shadow hover:shadow-xl hover:border-green-500">
         <img :src="image" alt="Sector Image" class="w-45 h-40 object-cover rounded-full mb-8 mx-auto" />
-        <h2 class="text-lg font-bold text-left mb-2 ">{{ ServiceName }}</h2>
+        <h2 class="text-[0.9rem] font-bold text-left mb-2 ">{{ ServiceName }}</h2>
         <p class="text-gray-600 text-xs dark:text-white text-left leading-relaxed mb-2">
             {{ Description }}
 
