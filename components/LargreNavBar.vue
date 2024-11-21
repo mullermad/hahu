@@ -42,19 +42,20 @@
 
         <!-- Navigations -->
         <div
-            class="flex items-center space-x-3 mr-6 mt-3   md:flex-row space-y-4 md:space-y-0 md:space-x-6 p-2 md:p-0 ">
-            <NuxtLink to="/"
-                class="dark:text-white  focus:font-extrabold  active:font-extrabold dark:hover:text-[#009688] font-roboto text-gray-600 text-xs hover:text-[#009688] focus:text-[#009688]">
+            class="flex items-center space-x-1 mr-6 mt-3   md:flex-row space-y-2 md:space-y-0 md:space-x-6 p-2 md:p-0 ">
+            <NuxtLink to="/" :class="{ active: $route.hash == '' }"
+                class="dark:text-white dark:hover:text-[#009688] font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs hover:text-[#009688] focus:text-[#009688]">
                 Home
             </NuxtLink>
 
 
-            <NuxtLink to="/#about"
+
+            <NuxtLink to="/#about" :class="{ active: $route.hash == '#about' }"
                 class="dark:text-white dark:hover:text-[#009688] font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs hover:text-[#009688] focus:text-[#009688]">
                 About
             </NuxtLink>
 
-            <NuxtLink @click.prevent="openJobsModal"
+            <NuxtLink @click.prevent="openJobsModal" :class="{ active: $route.hash == '#job' }"
                 class="dark:text-white dark:hover:text-[#009688] font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs hover:text-[#009688] focus:text-[#009688]">
 
                 Jobs
@@ -63,7 +64,7 @@
             <!-- Modal Component -->
             <JobsModal :isOpen="isJobsModalOpen" @close="closeJobsModal" @viewAll="handleViewAll" />
 
-            <NuxtLink to="/#vacancy"
+            <NuxtLink to="/#vacancy" :class="{ active: $route.hash == '#vacancy' }"
                 class="dark:text-white dark:hover:text-[#009688] font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs hover:text-[#009688] focus:text-[#009688]">
                 Post Vacancy
             </NuxtLink>
@@ -74,7 +75,8 @@
 
             <NuxtLink @click="toggleTheme"
                 class="dark:text-white dark:hover:text-[#009688] font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs hover:text-[#009688] focus:text-[#009688]">
-                <svg v-if="isDarkMode" xmlns="http://www.w3.org/2000/svg" width="28" height="14" viewBox="0 0 24 24">
+                <svg v-if="colorMode.value === 'dark'" xmlns="http://www.w3.org/2000/svg" width="28" height="14"
+                    viewBox="0 0 24 24">
                     <path fill="currentColor"
                         d="M11 3V2q0-.425.288-.712T12 1t.713.288T13 2v1q0 .425-.288.713T12 4t-.712-.288T11 3m0 19v-1q0-.425.288-.712T12 20t.713.288T13 21v1q0 .425-.288.713T12 23t-.712-.288T11 22m11-9h-1q-.425 0-.712-.288T20 12t.288-.712T21 11h1q.425 0 .713.288T23 12t-.288.713T22 13M3 13H2q-.425 0-.712-.288T1 12t.288-.712T2 11h1q.425 0 .713.288T4 12t-.288.713T3 13m16.75-7.325l-.35.35q-.275.275-.687.275T18 6q-.275-.275-.288-.687t.263-.713l.375-.375q.275-.3.7-.3t.725.3t.288.725t-.313.725M6.025 19.4l-.375.375q-.275.3-.7.3t-.725-.3t-.288-.725t.313-.725l.35-.35q.275-.275.688-.275T6 18q.275.275.288.688t-.263.712m12.3.35l-.35-.35q-.275-.275-.275-.687T18 18q.275-.275.688-.287t.712.262l.375.375q.3.275.3.7t-.3.725t-.725.288t-.725-.313M4.6 6.025l-.375-.375q-.3-.275-.3-.7t.3-.725t.725-.288t.725.313l.35.35q.275.275.275.688T6 6q-.275.275-.687.288T4.6 6.025M12 18q-2.5 0-4.25-1.75T6 12t1.75-4.25T12 6t4.25 1.75T18 12t-1.75 4.25T12 18m0-2q1.675 0 2.838-1.162T16 12t-1.162-2.838T12 8T9.162 9.163T8 12t1.163 2.838T12 16m0-4" />
                 </svg>
@@ -91,16 +93,16 @@
             </NuxtLink>
 
             <!-- Login and signup -->
-            <NuxtLink to="/login"
-                class="text-[0.7rem] text-white hover:text-gray-600 bg-[#009688] hover:bg-[#7fccc2] focus:text-white border rounded-md px-2 py-1 transition-colors duration-400 ease-in-out dark:text-white">
+            <NuxtLink to="/login" class="text-[0.6rem] text-white bg-[#009688] border rounded-md px-2 py-1 transition-colors duration-800 ease-in-out dark:text-white 
+         hover:text-gray-600 hover:bg-[#7fccc2] hover:delay-200">
                 Login
             </NuxtLink>
 
 
 
             <span class="dark:text-white focus:font-extrabold  active:font-extrabold text-black text-[0.7rem]">Or</span>
-            <NuxtLink to="/signup"
-                class="text-[0.7rem] text-white hover:text-gray-600 bg-[#009688] hover:bg-[#7fccc2] focus:text-white border rounded-md px-2 py-1 transition-colors duration-400 ease-in-out dark:text-white">
+            <NuxtLink to="/signup" class="text-[0.6rem] text-white bg-[#009688] border rounded-md px-2 py-1 transition-colors duration-800 ease-in-out dark:text-white 
+         hover:text-gray-600 hover:bg-[#7fccc2] hover:delay-200">
                 Sign up
             </NuxtLink>
         </div>
@@ -109,36 +111,66 @@
 
 </template>
 
-
 <script setup>
+import { ref, watch } from 'vue';
 
-const isDarkMode = ref(true);
-const isMenuOpen = ref(false);
-const isJobsModalOpen = ref(false)
+const colorMode = useColorMode(); // Reactive, updates dynamically
+const isDarkMode = ref(colorMode.value);
 
-const openJobsModal = () => {
-    isJobsModalOpen.value = true
+// Function to update color mode based on system preference
+function updateColorMode() {
+    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    colorMode.value = prefersDarkMode ? "dark" : "light";
 }
+
+// Watch for system preference changes
+if (process.client) {
+    // Initial check on load
+    updateColorMode();
+
+    // Add a listener for changes to system preference
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
+        colorMode.value = event.matches ? "dark" : "light";
+    });
+}
+
+
+console.log("colormode", colorMode.value);
+
+// Reactive dark mode state tied to colorMode
+watch(isDarkMode, (newValue) => {
+    handleDarkModeChange(newValue);
+});
+// Handler for the dark mode 
+function handleDarkModeChange(newDarkModeState) {
+    isDarkMode.value = newDarkModeState;
+    if (process.client) {
+        document.documentElement.classList.toggle('dark', isDarkMode.value);
+    }
+}
+
+
+// Modal and menu states
+const isJobsModalOpen = ref(false);
+
+// Modal and menu functions
+const openJobsModal = () => {
+    isJobsModalOpen.value = true;
+};
 
 const closeJobsModal = () => {
-    isJobsModalOpen.value = false
-}
+    isJobsModalOpen.value = false;
+};
 
-const handleViewAll = () => {
-    console.log('View All clicked')
-}
-const toggleMenu = () => {
-    isMenuOpen.value = !isMenuOpen.value; // Toggle the menu open state
-}
-
+// Theme toggle function
 const toggleTheme = () => {
-    isDarkMode.value = !isDarkMode.value;
-    emit('update-dark-mode', isDarkMode.value);
-}
-
-const emit = defineEmits(['update-dark-mode']);
-emit('update-dark-mode', isDarkMode.value);
-
-watch(isDarkMode, (newValue) => emit('update-dark-mode', newValue));
-
+    colorMode.value = colorMode.value === 'dark' ? 'light' : 'dark';
+};
 </script>
+
+
+<style scoped>
+.active {
+    @apply text-[#009688] font-extrabold;
+}
+</style>

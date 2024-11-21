@@ -1,8 +1,8 @@
 <template>
-    <div :class="isDarkMode ? 'bg-[#011812] text-white' : 'bg-gray-100 text-black'"
-        class="font-roboto h-screen overflow-y-scroll scrollbar-thin ">
-        <NavBar @update-dark-mode="handleDarkModeChange" />
-        <LargreNavBar @update-dark-mode="handleDarkModeChange" />
+    <div
+        class="font-roboto h-screen overflow-y-scroll scrollbar-thin bg-gray-300 bg-opacity-50  text-black dark:bg-[#011812] dark:text-white">
+        <NavBar />
+        <LargreNavBar />
         <Hero />
         <CareerSector />
         <Services />
@@ -15,13 +15,5 @@
 
 
 <script setup>
-const isDarkMode = ref(true);
 
-// Handler for the dark mode 
-function handleDarkModeChange(newDarkModeState) {
-    isDarkMode.value = newDarkModeState;
-    if (process.client) {
-        document.documentElement.classList.toggle('dark', isDarkMode.value);
-    }
-}
 </script>

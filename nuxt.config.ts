@@ -17,9 +17,19 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-
+  ssr: false,
   css: ["@/assets/css/main.css"],
-  modules: ["@nuxt/fonts", "@nuxtjs/google-fonts", "@nuxt/icon"],
+  modules: [
+    "@nuxt/fonts",
+    "@nuxtjs/google-fonts",
+    "@nuxt/icon",
+    "@nuxtjs/color-mode",
+  ],
+  colorMode: {
+    preference: "system", // default to system preference
+    fallback: "light", // fallback mode
+    classSuffix: "",
+  },
   googleFonts: {
     families: {
       Roboto: [400, 700],

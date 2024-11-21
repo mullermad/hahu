@@ -86,7 +86,7 @@
             <NuxtLink to="/about" @click="closeMenu" class="text-gray-800 dark:text-white hover:text-teal-600">About
             </NuxtLink>
             <NuxtLink @click.prevent="openJobsModal"
-                class="dark:text-white dark:hover:text-[#009688] font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs hover:text-[#009688] focus:text-[#009688]">
+                class="  dark:text-white text-gray-800 hover:text-teal-600 dark:hover:text-[#009688]      ">
 
                 Jobs
             </NuxtLink>
@@ -116,8 +116,65 @@
 
 
 </template>
-
 <script setup>
+import { ref, watch } from 'vue';
+const isMenuOpen = ref(false);
+const colorMode = useColorMode(); // Reactive, updates dynamically
+// Function to update color mode based on system preference
+function updateColorMode() {
+    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    colorMode.value = prefersDarkMode ? "dark" : "light";
+}
+
+// Watch for system preference changes
+if (process.client) {
+    // Initial check on load
+    updateColorMode();
+
+    // Add a listener for changes to system preference
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
+        colorMode.value = event.matches ? "dark" : "light";
+    });
+}
+
+
+console.log("colormode", colorMode.value);
+
+// Reactive dark mode state tied to colorMode
+const isDarkMode = ref(colorMode.value);
+watch(isDarkMode, (newValue) => {
+    handleDarkModeChange(newValue);
+});
+// Handler for the dark mode 
+function handleDarkModeChange(newDarkModeState) {
+    isDarkMode.value = newDarkModeState;
+    if (process.client) {
+        document.documentElement.classList.toggle('dark', isDarkMode.value);
+    }
+}
+
+
+// Modal and menu states
+const isJobsModalOpen = ref(false);
+
+// Modal and menu functions
+const openJobsModal = () => {
+    isJobsModalOpen.value = true;
+};
+
+const closeJobsModal = () => {
+    isJobsModalOpen.value = false;
+};
+const toggleMenu = () => {
+    isMenuOpen.value = !isMenuOpen.value; // Toggle the menu open state
+}
+// Theme toggle function
+const toggleTheme = () => {
+    colorMode.value = colorMode.value === 'dark' ? 'light' : 'dark';
+};
+</script>
+
+<!-- <script setup>
 
 const isDarkMode = ref(true);
 const isMenuOpen = ref(false);
@@ -148,4 +205,4 @@ emit('update-dark-mode', isDarkMode.value);
 
 watch(isDarkMode, (newValue) => emit('update-dark-mode', newValue));
 
-</script>
+</script> -->
