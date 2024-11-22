@@ -1,7 +1,7 @@
 <template>
     <section class="py-20 relative">
         <!-- Dot image positioned on the left side and made small -->
-        <div class="absolute  left-0">
+        <div class="absolute  left-0 top-12">
             <img src="@/assets/img/dotImage.svg" alt="dot svg" class="w-24 h-36 md:w-37 md:h-56 lg:w-48 lg:h-72" />
         </div>
 
