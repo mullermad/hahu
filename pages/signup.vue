@@ -15,11 +15,11 @@
 
                 <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
                     <div class="w-full sm:flex-1">
-                        <label for="first-name" class="block text-gray-600 text-lg font-roboto dark:text-gray-300">
+                        <label for="first-name" class="block text-gray-600 text-lg  font-roboto dark:text-gray-300">
                             First Name
                         </label>
                         <input id="first-name" v-model="firstName" type="text" required
-                            class="mt-1 block w-full border-[#009688] focus:border-[#009688] focus:border-2 placeholder-gray-400 font-roboto px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                            class="mt-1 block w-full  border-[#009688] focus:border-[#009688] focus:border-2 placeholder-gray-400 text-gray-600 font-roboto px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                             placeholder="Enter your first name" />
                     </div>
                     <div class="w-full sm:flex-1">
@@ -27,7 +27,7 @@
                             Last Name
                         </label>
                         <input id="last-name" v-model="lastName" type="text" required
-                            class="mt-1 block w-full border-[#009688] focus:border-[#009688] focus:border-2 placeholder-gray-400 font-roboto px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                            class="mt-1 block w-full border-[#009688] text-gray-600 focus:border-[#009688] focus:border-2 placeholder-gray-400 font-roboto px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                             placeholder="Enter your last name" />
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                         Email
                     </label>
                     <input id="email-phone" type="text" required
-                        class="w-full  mt-1 block border-[#009688]  focus:border-[#009688] focus:border-2 placeholder-gray-400  font-roboto px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-primary  dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                        class="w-full  mt-1 block border-[#009688] text-gray-600  focus:border-[#009688] focus:border-2 placeholder-gray-400  font-roboto px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-primary  dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         placeholder="Enter your email or phone number (251...)" />
                 </div>
                 <div>
@@ -51,7 +51,7 @@
                             +251
                         </span>
                         <input id="email-phone" type="Number" required
-                            class="block w-full border-y-[#009688] border-r-[#009688] focus:border-y-[#009688] focus:border-r-[#009688] focus:border-2 placeholder-gray-400 font-roboto px-4 py-3 bg-white border  rounded-r-md shadow-sm focus:outline-none focus:ring-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                            class="block w-full border-y-[#009688] text-gray-600 border-r-[#009688] focus:border-y-[#009688] focus:border-r-[#009688] focus:border-2 placeholder-gray-400 font-roboto px-4 py-3 bg-white border  rounded-r-md shadow-sm focus:outline-none focus:ring-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                             placeholder="Enter your phone number" />
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                     </label>
                     <div class="relative mt-1">
                         <input id="password" :type="showPassword ? 'text' : 'password'" required
-                            class="mt-1 block border-[#009688] focus:border-[#009688] focus:border-2 placeholder-gray-400 font-roboto w-full px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                            class="mt-1 block border-[#009688] text-gray-600 focus:border-[#009688] focus:border-2 placeholder-gray-400 font-roboto w-full px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                             placeholder="Enter your password" />
                         <button type="button" @click="togglePasswordVisibility"
                             class="absolute right-[2%] top-1/2 transform -translate-y-1/2 text-gray-500 focus:outline-none dark:text-gray-300"
@@ -80,7 +80,7 @@
                     <div class="relative mt-1">
                         <input id="password" :type="showCofirmPassword ? 'text' : 'password'" v-model="password"
                             required
-                            class="mt-1 block border-[#009688] focus:border-[#009688] focus:border-2 placeholder-gray-400 font-roboto w-full px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                            class="mt-1 block border-[#009688] text-gray-600 focus:border-[#009688] focus:border-2 placeholder-gray-400 font-roboto w-full px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                             placeholder="Enter your password" />
                         <button type="button" @click="toggleConfirmPasswordVisibility"
                             class="absolute right-[2%] top-1/2 transform -translate-y-1/2 text-gray-500 focus:outline-none dark:text-gray-300"
@@ -95,21 +95,30 @@
             <div class="">
 
 
-                <div class="relative flex  text-gray-600 text-lg font-roboto dark:text-gray-300 py-5">
-                    <div class=""><input id="Accepting out terms and conditions"
-                            name="Accepting out terms and conditions" type="checkbox" value="false"></div>
-                    <div class="ml-3 text-md"><label for="Accepting out terms and conditions"
-                            class="font-roboto text-secondary dark:text-gray-300"><span>I
-                                agree to the <a href="https://hahu.jobs/privacy-policy" target="_blank"
-                                    class="text-[#009688] underline cursor-alias">Terms and
-                                    Conditions</a></span></label>
+                <div class="relative flex text-gray-600 text-lg font-roboto dark:text-gray-300 py-5">
+                    <div>
+                        <input id="accept-terms" name="accept-terms" type="checkbox" value="false"
+                            class="w-6 h-6 text-gray-600 cursor-pointer appearance-none border-2 border-gray-300 rounded-sm checked:border-[#009688] checked:bg-[#009688] checked:before:content-['✔'] checked:before:text-white checked:before:text-md checked:before:my-auto" />
+                    </div>
+                    <div class="ml-3 text-md">
+                        <label for="accept-terms" class="font-roboto text-secondary dark:text-gray-300">
+                            <span>
+                                I agree to the
+                                <a href="https://hahu.jobs/privacy-policy" target="_blank"
+                                    class="text-[#009688] underline cursor-alias">
+                                    Terms and Conditions
+                                </a>
+                            </span>
+                        </label>
                     </div>
                 </div>
+
+
             </div>
 
             <div>
-                <button type="submit"
-                    class="w-full hover:text-gray-600 hover:bg-[#7fccc2] hover:delay-200 flex justify-center font-roboto py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-white bg-[#009688]  focus:outline-none focus:ring-2 focus:ring-offset-2 ">
+                <button type="submit" class="w-full flex justify-center font-roboto py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-white bg-[#009688] focus:outline-none focus:ring-2 focus:ring-offset-2 
+               hover:bg-[#7fccc2] hover:text-gray-600 transition-colors duration-300 ease-in-out">
                     Sign Up
                 </button>
             </div>
@@ -117,7 +126,6 @@
         <div class=" flex justify-center space-x-4 py-6  ">
             <!-- Google Sign-In Button -->
             <img src="@/assets/img/google.svg" alt="dot svg" class="w-6 h-8 mr-4" />
-
 
             <!-- LinkedIn Sign-In Button -->
             <img src="@/assets/img/linkdin.svg" alt="dot svg" class="w-7 h-8 " />

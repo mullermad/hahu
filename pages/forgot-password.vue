@@ -23,12 +23,9 @@
                     Email or Phone Number
                 </label>
                 <input id="email-phone" v-model="emailPhone" type="text" required
-                    class="mt-1 block border-[#009688]  focus:border-[#009688] focus:border-2 placeholder-gray-400  font-roboto  w-[80%] px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-primary  dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    class="mt-1 block border-[#009688] text-gray-600  focus:border-[#009688] focus:border-2 placeholder-gray-400  font-roboto  w-[80%] px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-primary  dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                     placeholder="Enter your email or phone number (251...)" />
             </div>
-
-
-
 
 
             <div>

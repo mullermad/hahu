@@ -15,7 +15,7 @@
                         Email or Phone Number
                     </label>
                     <input id="email-phone" v-model="emailPhone" type="text" required
-                        class="mt-1 block border-[#009688]  focus:border-[#009688] focus:border-2 placeholder-gray-400  font-roboto w-full px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-primary  dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                        class="mt-1 block border-[#009688] text-gray-600  focus:border-[#009688] focus:border-2 placeholder-gray-400  font-roboto w-full px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-primary  dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         placeholder="Enter your email or phone number (251...)" />
                 </div>
 
@@ -25,7 +25,7 @@
                     </label>
                     <div class="relative mt-1">
                         <input id="password" :type="showPassword ? 'text' : 'password'" v-model="password" required
-                            class="mt-1 block border-[#009688] focus:border-[#009688] focus:border-2 placeholder-gray-400 font-roboto w-full px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                            class="mt-1 block border-[#009688] text-gray-600 focus:border-[#009688] focus:border-2 placeholder-gray-400 font-roboto w-full px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                             placeholder="Enter your password" />
                         <button type="button" @click="togglePasswordVisibility"
                             class="absolute right-[2%] top-1/2 transform -translate-y-1/2 text-gray-500 focus:outline-none dark:text-gray-300"
@@ -49,10 +49,11 @@
             </div>
 
             <div>
-                <button type="submit"
-                    class="w-full  hover:text-gray-600 hover:bg-[#7fccc2] flex justify-center font-roboto py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-white bg-[#009688] focus:outline-none focus:ring-2 focus:ring-offset-2 ">
+                <button type="submit" class="w-full flex justify-center font-roboto py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-white bg-[#009688] focus:outline-none focus:ring-2 focus:ring-offset-2 
+           hover:bg-[#7fccc2] hover:text-gray-600 transition-colors duration-300 ease-in-out">
                     Log In
                 </button>
+
             </div>
         </form>
         <div class="">

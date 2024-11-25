@@ -167,8 +167,6 @@ const toggleTheme = () => {
     colorMode.value = colorMode.value === 'dark' ? 'light' : 'dark';
 };
 </script>
-
-
 <style scoped>
 .active {
     @apply text-[#009688] font-extrabold;

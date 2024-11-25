@@ -9,7 +9,7 @@
             <img src="@/assets/img/login_illustration.png" alt="Login illustration"
                 class="w-[60%] h-[90%] ml-28 -mt-10" />
         </div>
-        <div className="text-white font-roboto  text-center -mt-14">
+        <div className="text-white font-roboto text-center -mt-14">
             <p className="3xl:text-[40px] lg:text-2xl uppercase font-semibold 2xl:leading-[3.75rem]">
                 Your Dream Jobs are Waiting
             </p>
