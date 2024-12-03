@@ -1,0 +1,18 @@
+query BasicSectors(
+  $where: basic_sectors_bool_exp
+  $limit: Int
+  $offset: Int
+  $args: search_sectors_args
+) {
+  sectors: search_sectors(
+    where: $where
+    limit: $limit
+    offset: $offset
+    order_by: { name: asc_nulls_last }
+    args: $args
+  ) {
+    id
+    name
+    icon_class
+  }
+}

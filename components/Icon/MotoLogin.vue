@@ -1,3 +1,6 @@
+<script setup>
+</script>
+
 <template>
     <svg width="126" height="14" viewBox="0 0 176 18" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -41,6 +44,3 @@
             fill="white" class="dark:fill-[#fff]" />
     </svg>
 </template>
-
-<script setup>
-</script>

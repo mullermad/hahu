@@ -1,19 +1,15 @@
+<script setup>
+// console.log(import.meta.env.VITE_API);
+
+</script>
 <template>
-    <div
-        class="font-roboto h-screen overflow-y-scroll scrollbar-thin bg-gray-300 bg-opacity-50  text-black dark:bg-[#011812] dark:text-white">
-        <NavBar />
-        <LargreNavBar />
+    <div>
         <Hero />
         <CareerSector />
         <Services />
-        <AllAbout />
+        <About />
+        <WhyChooseUs />
         <PostVacancy />
         <NewsAndEvents />
-        <Footer />
     </div>
 </template>
-
-
-<script setup>
-
-</script>

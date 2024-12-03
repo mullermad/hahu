@@ -1,3 +1,12 @@
+<script setup>
+import hahu_robotImage from '@/assets/img/hahu_robot.svg';
+import telegramImage from '@/assets/img/telegram.svg';
+import xImage from '@/assets/img/x.svg';
+import linkedin_colorImage from '@/assets/img/linkedin_color.svg';
+import facebookcircularImage from '@/assets/img/facebook-circular.svg';
+</script>
+
+
 <template>
     <section class="about-section  p-6 ">
         <div
@@ -25,7 +34,7 @@
                     in terms of skill, knowledge, ability, and expected activities.
                 </div>
                 <button
-                    class="text-white bg-[#009688] hover:bg-[#8fcec8] hover:text-secondary text-[0.62rem]  ml-24 lg:ml-2 mt-3 md:mt-4 p-1 md:p-2 lg:px-3 lg:py-1 font-semibold flex transition duration-700 ease-in-out items-center border rounded-md">
+                    class="text-white bg-primary hover:bg-[#8fcec8] hover:text-secondary text-[0.62rem]  ml-24 lg:ml-2 mt-3 md:mt-4 p-1 md:p-2 lg:px-3 lg:py-1 font-semibold flex transition duration-700 ease-in-out items-center border rounded-md">
                     Explore more <span class=" lg:justify-start">
                         <svg class="w-2 h-2 ml-1 md:w-4 md:h-4 lg:w-4 lg:h-5" fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -64,11 +73,3 @@
         </div>
     </section>
 </template>
-
-<script setup>
-import hahu_robotImage from '@/assets/img/hahu_robot.svg';
-import telegramImage from '@/assets/img/telegram.svg';
-import xImage from '@/assets/img/x.svg';
-import linkedin_colorImage from '@/assets/img/linkedin_color.svg';
-import facebookcircularImage from '@/assets/img/facebook-circular.svg';
-</script>

@@ -16,6 +16,7 @@ module.exports = {
         secondary: "rgb(68, 79, 96)", // Custom color for text-secondary
         "scrollbar-thumb": "green", // Custom scrollbar thumb color
         "scrollbar-track": "#009688", // Custom scrollbar track color
+        primary: "#009688",
       },
       fontFamily: {
         roboto: ["Roboto"],

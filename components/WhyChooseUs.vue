@@ -1,3 +1,8 @@
+<script setup>
+import keyboardImg from "@/assets/img/keyboard.svg"; // Update with your image path
+</script>
+
+
 <template>
   <section class="about-section p-6">
     <div
@@ -12,10 +17,10 @@
           Why choose us
         </h2>
 
-        <h3 class="text-xl font-bold font-Roboto text-[#009688] mb-2">
+        <h3 class="text-xl font-bold font-Roboto text-primary mb-2">
           Convenience
         </h3>
-        <h5 class="text-[#009688] text-md font-bold mb-2 font-Roboto">
+        <h5 class="text-primary text-md font-bold mb-2 font-Roboto">
           You no longer look for jobs, jobs look for you.
         </h5>
         <p class="dark:text-white text-gray-600 mb-6 leading-relaxed text-sm font-Roboto">
@@ -24,10 +29,10 @@
           sources to set them into one searchable database.
         </p>
 
-        <h3 class="text-xl font-bold font-Roboto text-[#009688] mb-2">
+        <h3 class="text-xl font-bold font-Roboto text-primary mb-2">
           Accessibility
         </h3>
-        <h5 class="text-[#009688] text-md font-bold mb-2 font-Roboto">
+        <h5 class="text-primary text-md font-bold mb-2 font-Roboto">
           Reachable across multiple channels and platforms
         </h5>
         <p class="dark:text-white text-gray-600 mb-6 leading-relaxed text-sm font-Roboto">
@@ -36,8 +41,8 @@
           your designated medium.
         </p>
 
-        <h3 class="text-[#009688] text-xl font-bold mb-2">Ease of use</h3>
-        <h5 class="text-[#009688] text-md font-bold mb-2 font-Roboto">
+        <h3 class="text-primary text-xl font-bold mb-2">Ease of use</h3>
+        <h5 class="text-primary text-md font-bold mb-2 font-Roboto">
           Both online and offline service options.
         </h5>
         <p class="dark:text-white text-gray-600 mb-6 leading-relaxed text-sm font-Roboto">
@@ -49,7 +54,3 @@
     </div>
   </section>
 </template>
-
-<script setup>
-import keyboardImg from "@/assets/img/keyboard.svg"; // Update with your image path
-</script>

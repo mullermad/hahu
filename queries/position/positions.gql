@@ -1,0 +1,10 @@
+query BasicPosition(
+  $filter: basic_positions_bool_exp
+  $limit: Int = 10
+  $offset: Int = 0
+) {
+  positions: search_positions(where: $filter, limit: $limit, offset: $offset) {
+    id
+    name
+  }
+}

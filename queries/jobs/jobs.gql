@@ -1,0 +1,64 @@
+query ($filter: jobs_bool_exp, $limit: Int, $offset: Int) {
+  jobs(where: $filter, limit: $limit, offset: $offset) {
+    id
+    title
+    total_web_view_count
+    telegram_view_count
+    total_view_count
+    type
+    max_years_of_experience
+    years_of_experience
+    summary
+    salary
+    deadline
+    expired
+    location
+    source
+    application_method
+    application_url
+    application_email
+    number_of_applicants
+    job_cities {
+      city {
+        name
+        region {
+          name
+          id
+        }
+      }
+    }
+    entity {
+      logo
+      name
+      id
+    }
+    sub_sector {
+      name
+      sector {
+        name
+        id
+        icon_class
+        icon_code
+      }
+    }
+    area {
+      address
+      name
+    }
+    isco_08 {
+      isco_08_code
+      title_en
+      title_am
+    }
+    soc_2010 {
+      title
+      onetsoc_code
+    }
+    esco_code
+  }
+  jobs_aggregate(where: $filter) {
+    aggregate {
+      count
+    }
+  }
+}

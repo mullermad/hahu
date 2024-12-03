@@ -1,5 +1,5 @@
 <template>
-    <div class=" h-screen flex  bg-[#009688]  ">
+    <div class=" h-screen flex  bg-primary  ">
         <!-- left  half - images -->
 
         <AuthImage />
@@ -29,7 +29,7 @@
                 <div class="">
 
 
-                  
+
 
 
                 </div>

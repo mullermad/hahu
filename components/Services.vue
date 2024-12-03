@@ -1,3 +1,11 @@
+<script setup>
+import build_career_profileImage from '@/assets/img/build_career_profile.svg';
+import job_applicationImage from '@/assets/img/job_application.svg';
+import vacancy_notificationImage from '@/assets/img/vacancy_notification.svg';
+</script>
+
+
+
 <template>
     <div class="mx-auto text-center mt-8">
         <h1 class="dark:text-white text-4xl font-extrabold text-secondary mb-2 ">Services</h1>
@@ -30,12 +38,3 @@
 
     </div>
 </template>
-
-
-<script setup>
-import build_career_profileImage from '@/assets/img/build_career_profile.svg';
-import job_applicationImage from '@/assets/img/job_application.svg';
-import vacancy_notificationImage from '@/assets/img/vacancy_notification.svg';
-
-
-</script>

@@ -1,3 +1,13 @@
+<script setup>
+import telegramImage from '@/assets/img/telegram.svg';
+import xImage from '@/assets/img/x.svg';
+import linkedin_colorImage from '@/assets/img/linkedin_color.svg';
+import facebookcircularImage from '@/assets/img/facebook-circular.svg';
+import logoImage from '@/assets/img/logofooter.svg';
+
+</script>
+
+
 <template>
     <footer class="dark:bg-[#121a26] bg-white dark:text-white text-gray-800 shadow-md py-2 mt-5">
         <div class="container mx-auto px-3 font-serif">
@@ -10,11 +20,11 @@
                             Get_Started</h3>
                         <ul class="text-gray-800 flex flex-col space-y-1 space-x-0 text-sm">
                             <li><a href="#"
-                                    class=" dark:hover:text-gray-400 font-roboto text-[0.85rem] font-lightbold text-gray-800  dark:text-white hover:text-[#009688]">Sign
+                                    class=" dark:hover:text-gray-400 font-roboto text-[0.85rem] font-lightbold text-gray-800  dark:text-white hover:text-primary">Sign
                                     up</a>
                             </li>
                             <li><a href="#"
-                                    class=" dark:hover:text-gray-400 font-roboto text-[0.85rem] font-lightbold text-gray-800 dark:text-white hover:text-[#009688]">Login</a>
+                                    class=" dark:hover:text-gray-400 font-roboto text-[0.85rem] font-lightbold text-gray-800 dark:text-white hover:text-primary">Login</a>
                             </li>
                         </ul>
                     </div>
@@ -28,10 +38,10 @@
                         </h3>
                         <ul class="text-gray-400 flex flex-col space-y-2 text-sm">
                             <li><a href="#"
-                                    class="text-[0.85rem] font-roboto font-lightbold text-gray-800 line-clamp-1  dark:text-white hover:text-[#009688]">HahuJobsIO</a>
+                                    class="text-[0.85rem] font-roboto font-lightbold text-gray-800 line-clamp-1  dark:text-white hover:text-primary">HahuJobsIO</a>
                             </li>
                             <li><a href="#"
-                                    class="text-[0.83rem] font-roboto font-lightbold text-gray-800 dark:text-white hover:text-[#009688]">Minab
+                                    class="text-[0.83rem] font-roboto font-lightbold text-gray-800 dark:text-white hover:text-primary">Minab
                                     Tech</a>
                             </li>
                         </ul>
@@ -234,12 +244,3 @@
         </div>
     </footer>
 </template>
-
-<script setup>
-import telegramImage from '@/assets/img/telegram.svg';
-import xImage from '@/assets/img/x.svg';
-import linkedin_colorImage from '@/assets/img/linkedin_color.svg';
-import facebookcircularImage from '@/assets/img/facebook-circular.svg';
-import logoImage from '@/assets/img/logofooter.svg';
-
-</script>

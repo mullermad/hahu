@@ -1,3 +1,8 @@
+<script setup>
+
+
+</script>
+
 <template>
     <section class="py-20 relative">
         <!-- Dot image positioned on the left side and made small -->
@@ -30,15 +35,15 @@
 
             <div class="flex justify-center space-x-14 text-gray-700">
                 <div class="flex flex-col items-center">
-                    <span class="text-xl font-black font-sans text-[#009688] ">723</span>
+                    <span class="text-xl font-black font-sans text-primary ">723</span>
                     <span class="dark:text-white  text-sm font-extrabold">Jobs</span>
                 </div>
                 <div class="flex flex-col items-center">
-                    <span class="text-xl font-black font-sans text-[#009688] ">256</span>
+                    <span class="text-xl font-black font-sans text-primary ">256</span>
                     <span class="dark:text-white  text-sm font-extrabold">Companies</span>
                 </div>
                 <div class="flex flex-col items-center">
-                    <span class="text-xl font-extrabold font-sans text-[#009688] ">14</span>
+                    <span class="text-xl font-extrabold font-sans text-primary ">14</span>
                     <span class="dark:text-white  text-sm font-extrabold">Sectors</span>
                 </div>
             </div>
@@ -49,8 +54,3 @@
         </div>
     </section>
 </template>
-
-<script setup>
-
-
-</script>
