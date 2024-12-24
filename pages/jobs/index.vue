@@ -19,11 +19,15 @@ const Sectors = ref([])
 const City = ref([])
 const limit = ref(10);
 const offset = ref(0);
-const selctedPosition = ref("")
+const selctedPosition = ref({
+    id: route.query.position_id || null,
+})
 const selectedSector = ref({
     id: route.query.sector_id || null,
 });
-const selectedCity = ref("");
+const selectedCity = ref({
+    id: route.query.city_id || null,
+});
 const selectedJobType = ref([])
 const showFilters = ref(true);
 const yearsofexperiancerange = ref([0, 10]);
@@ -287,19 +291,21 @@ onCityResult((response) => {
 </script>
 
 <template>
-    <div class="min-h-screen  bg-gray-100 dark:bg-[#011812]">
+    <div class="min-h-screen   dark:bg-[#011812] ml-4">
         <div class="flex flex-col md:flex-row ">
             <div class="mt-20 md:w-[18%]">
                 <div class="p-4  ">
                     <!-- Toggle Button for Additional Filters -->
                     <div>
-                        <button @click="toggleFilters" class="flex justify-between items-center text-left ">
+                        <button @click="toggleFilters" class="flex justify-between items-center text-left ml-4 ">
 
-                            <Icon name="lets-icons:filter" class="w-4 h-4 mr-2" />
+                            <Icon name="lets-icons:filter" class="w-4 h-4 2xl:w-6 2xl:h-6 mr-2" />
 
-                            <h2 class="text-md font-bold dark:text-white text-gray-700"> Additional Filters</h2>
-                            <svg :class="{ 'rotate-180': showFilters }" class="ml-6 w-6 h-6 transition-transform"
-                                fill="#009688" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <h2 class="text-md 2xl:text-lg font-bold dark:text-white text-gray-700"> Additional Filters
+                            </h2>
+                            <svg :class="{ 'rotate-180': showFilters }"
+                                class="ml-6 2xl:ml-16 w-6 h-6 2xl:w-7 2xl:h-8 transition-transform" fill="#009688"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
                                     d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.25a.75.75 0 01.02-1.06z"
                                     clip-rule="evenodd" />
@@ -309,7 +315,6 @@ onCityResult((response) => {
 
                     <!-- Filters Section -->
                     <div v-if="showFilters" class="mt-4">
-
                         <div class="p-4">
                             <ClientOnly>
                                 <Vueform>
@@ -319,15 +324,16 @@ onCityResult((response) => {
                             </ClientOnly>
 
                             <div class="flex items-center justify-between mt-2">
-                                <p class="mr-2 text-[0.6rem] dark:text-white text-gray-600 whitespace-nowrap">
-                                    {{ !isChecked ? yearsofexperiancerange[0] + "- " +
-                                        yearsofexperiancerange[1] + "years of experience" : "greater than 10 years" }}
+                                <p
+                                    class="mr-2 text-[0.7rem] xl:text-[0.9rem] dark:text-white text-gray-600 whitespace-nowrap">
+                                    {{ yearsofexperiancerange[0] + "- " +
+                                        yearsofexperiancerange[1] + " " + " years of experience" }}
                                 </p>
 
                                 <label
-                                    class="flex items-center dark:text-white  text-[0.7rem] text-gray-700 cursor-pointer">
+                                    class="flex items-center dark:text-white  text-[0.7rem] xl:text-[0.8rem] text-gray-700 cursor-pointer">
                                     <input @click="toggleCheck" type="checkbox" v-model="isChecked"
-                                        class="mr-2 w-4 h-4  text-white bg-white cursor-pointer appearance-none checked:bg-primary border-2 border-gray-300 rounded-sm checked:border-primary relative
+                                        class="mr-2 w-4 h-4 2xl:p-2  text-white  border-primary bg-white cursor-pointer appearance-none checked:bg-primary border rounded-sm checked:border-primary relative
                                               before:content-['✔'] before:absolute before:top-1/2 before:left-1/2 before:transform before:-translate-x-1/2 before:-translate-y-1/2 before:opacity-0 checked:before:opacity-100" />
                                     &gt;10
                                 </label>
@@ -373,15 +379,14 @@ onCityResult((response) => {
 
             <div class="mt-8 ml-6 flex-1">
                 <!-- Search and Filters Row -->
-                <div
-                    class=" sticky   mt-1 z-10 bg-gray-100 dark:bg-[#011812] px-4 py-2 top-14   border-gray-200 dark:border-gray-700">
+                <div class=" sticky   mt-1 z-10  dark:bg-[#011812] px-4  top-14   border-gray-200 dark:border-gray-700">
                     <div class="flex flex-col items-center  justify-between lg:flex-row">
                         <!-- Small Search Field -->
-                        <form @submit.prevent="searchDone" class="flex-none  w-full lg:w-1/3 mb-2   lg:mr-4 relative">
+                        <form @submit.prevent="searchDone" class="flex-none   w-full lg:w-1/3 mb-2   lg:mr-2 relative">
                             <input type="text" v-model="titleSearch" placeholder="Search"
-                                class="hover:border-primary  w-full mt-2 dark:text-white text-sm px-4 py-1 bg-white dark:bg-slate-600 border text-gray-600 dark:placeholder-white rounded-md focus:ring-primary focus:border-primary focus:outline-none" />
-                            <Icon name="material-symbols:search-rounded"
-                                class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-primary cursor-pointer"
+                                class="hover:border-primary 2xl:py-3  w-full mt-2 dark:text-white text-sm px-4 py-1 placeholder-gray-600 bg-white dark:bg-slate-600 border text-gray-600 dark:placeholder-white rounded-l-md  focus:ring-primary focus:border-primary focus:outline-none" />
+                            <Icon name="material-symbols:search-rounded" size="24"
+                                class="absolute right-2   top-2/3 transform -translate-y-1/2 text-gray-400 hover:text-primary cursor-pointer"
                                 aria-label="Search" />
                         </form>
 
@@ -389,7 +394,7 @@ onCityResult((response) => {
 
 
                         <!--  Position Filter -->
-                        <div class="flex-grow w-full lg:w-1/6 mb-4 lg:mb-0">
+                        <div class="flex-grow  w-full  lg:w-1/6  mb-4 lg:mb-0">
                             <MyTextfeild @updateSearch="UpdateSearchTerm" :items="Positions"
                                 placeholder="Select Position" v-model="selctedPosition"
                                 @update:modelValue="selctedPosition = $event" />
@@ -397,14 +402,14 @@ onCityResult((response) => {
                         </div>
 
                         <!--  Sector Filter -->
-                        <div class="flex-grow w-full lg:w-1/5 mb-4  lg:mb-0">
+                        <div class="flex-grow w-full  lg:w-1/5 mb-4  lg:mb-0">
                             <MyTextfeild @updateSearch="UpdateSearchTerm" :items="Sectors" placeholder="Select Sector"
                                 v-model="selectedSector" @update:modelValue="selectedSector = $event" />
 
                         </div>
 
                         <!--  City Filter -->
-                        <div class="flex-grow w-full lg:w-1/5">
+                        <div class="flex-grow w-full  lg:w-1/5">
                             <MyTextfeild @updateSearch="UpdateSearchTerm" :items="City" placeholder="Select City"
                                 v-model="selectedCity" @update:modelValue="selectedCity = $event" />
                         </div>
@@ -425,12 +430,14 @@ onCityResult((response) => {
 
                 <div v-else>
                     <div v-if="jobs.length === 0"
-                        class="flex flex-col items-center justify-center h-screen text-center  gap-4">
-                        <img src="@/assets/img/search-not-found.svg" alt="No results found" class="w-52 h-52 mb-6" />
-                        <h2 class="text-2xl font-semibold dark:text-white text-gray-700">
+                        class="flex flex-col items-center justify-center 2xl:mt-24 text-center gap-4">
+                        <img src="@/assets/img/search-not-found.svg" alt="No results found"
+                            class="w-52 h-52 mb-6 2xl:w-80 2xl:h-80" />
+                        <h2 class="text-2xl 2xl:text-3xl font-semibold dark:text-white text-gray-700">
                             Sorry, we couldn’t find any match for your search.
                         </h2>
                     </div>
+
 
                     <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
                         <JobsCard v-for="job in jobs" :key="job.id" :job="job" />

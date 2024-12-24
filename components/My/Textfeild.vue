@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { onClickOutside } from "@vueuse/core";
+const router = useRouter();
 
 const searchQuery = ref('');
 const showDropdown = ref(false);
@@ -70,13 +71,43 @@ const unwatch = watch(() => props.items, () => {
 })
 
 
+watch(selectedItems, (newItem, oldItem) => {
+    const currentQuery = { ...router.currentRoute.value.query };
+
+    if (newItem) {
+        // Add the query parameter associated with the selected item
+        if (newItem.__typename === "basic_sectors" && newItem.id) {
+            currentQuery.sector_id = newItem.id;
+        } else if (newItem.__typename === "basic_positions" && newItem.id) {
+            currentQuery.position_id = newItem.id;
+        } else if (newItem.__typename === "basic_cities" && newItem.id) {
+            currentQuery.city_id = newItem.id;
+        }
+    } else if (oldItem) {
+        // Remove only the query parameter associated with the removed item
+        if (oldItem.__typename === "basic_sectors") {
+            delete currentQuery.sector_id;
+        } else if (oldItem.__typename === "basic_positions") {
+            delete currentQuery.position_id;
+        } else if (oldItem.__typename === "basic_cities") {
+            delete currentQuery.city_id;
+        }
+    }
+
+    router.replace({
+        path: '/jobs',
+        query: currentQuery,
+    });
+});
+
+
 </script>
 
 
 <template>
     <div ref="dropdownRef" class="relative ">
         <!-- Selected Items and Dropdown Trigger -->
-        <div class="px-4 py-1 hover:border-primary dark:bg-slate-600 dark:text-white bg:text-white border rounded bg-white cursor-pointer focus:ring-2 focus:ring-primary transition-all duration-200"
+        <div class="px-4 py-1 bg-gray-100 mr-1 hover:border-primary 2xl:py-3 dark:bg-slate-600 dark:text-white bg:text-white border rounded cursor-pointer focus:ring-2 focus:ring-primary transition-all duration-200"
             @click="toggleDropdown(!showDropdown)" :aria-expanded="showDropdown">
             <div class="flex items-center justify-between  dark:text-white">
                 <!-- Selected Item -->

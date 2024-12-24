@@ -25,7 +25,7 @@ const selectedSector = ref({
 });
 const selectedCity = ref("");
 const selectedJobType = ref([])
-const showFilters = ref(false);
+const showFilters = ref(true);
 const yearsofexperiancerange = ref([0, 10]);
 const isChecked = ref(false);
 const selectedRegion = ref([]);
@@ -297,7 +297,7 @@ watch(isChecked, (newValue) => {
 </script>
 
 <template>
-    <div class="min-h-screen  bg-gray-100 dark:bg-[#011812]">
+    <div class="min-h-screen  dark:bg-[#011812]">
         <div class="flex flex-col md:flex-row ">
             <div class="mt-20 md:w-[18%]">
                 <div class="p-4  ">
@@ -362,17 +362,17 @@ watch(isChecked, (newValue) => {
 
             </div>
 
-            <div class="mt-8 ml-6 flex-1">
+            <div class="mt-8 2xl:mt-12 ml-6 flex-1">
                 <!-- Search and Filters Row -->
                 <div
-                    class=" sticky   mt-1 z-10 bg-gray-100 dark:bg-[#011812] px-4 py-2 top-14   border-gray-200 dark:border-gray-700">
+                    class=" sticky   mt-1 z-10 dark:bg-[#011812] px-4 py-2 top-14   border-gray-200 dark:border-gray-700">
                     <div class="flex flex-col items-center  justify-between lg:flex-row">
                         <!-- Small Search Field -->
-                        <form @submit.prevent="searchDone" class="flex-none  w-full lg:w-1/3 mb-2   lg:mr-4 relative">
+                        <form @submit.prevent="searchDone" class="flex-none   w-full lg:w-1/3 mb-2   lg:mr-2 relative">
                             <input type="text" v-model="titleSearch" placeholder="Search"
-                                class="hover:border-primary  w-full mt-2 dark:text-white text-sm px-4 py-1 bg-white dark:bg-slate-600 border text-gray-600 dark:placeholder-white rounded-md focus:ring-primary focus:border-primary focus:outline-none" />
-                            <Icon name="material-symbols:search-rounded"
-                                class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-primary cursor-pointer"
+                                class="hover:border-primary 2xl:py-3  w-full mt-2 dark:text-white text-sm px-4 py-1 placeholder-gray-600 bg-white dark:bg-slate-600 border text-gray-600 dark:placeholder-white rounded-l-md  focus:ring-primary focus:border-primary focus:outline-none" />
+                            <Icon name="material-symbols:search-rounded" size="24"
+                                class="absolute right-2   top-2/3 transform -translate-y-1/2 text-gray-400 hover:text-primary cursor-pointer"
                                 aria-label="Search" />
                         </form>
 

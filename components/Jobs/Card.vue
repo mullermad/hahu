@@ -36,21 +36,21 @@ const formatTimeLeft = (deadline) => {
     <NuxtLink :to="`/jobs/${job.id}`">
 
         <div
-            class="bg-white dark:bg-[#121a26] rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 hover:border h-full border-primary ">
+            class="bg-white dark:bg-[#121a26] p-2   rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 hover:border h-full border-primary ">
             <div class="relative p-4">
 
-                <div class="absolute top-4 left-1 text-primary text-[0.6rem] font-medium px-3 py-1">
-                    <Icon name="uil:calender" class="mr-1 p-1 text-primary" />
+                <div class="  left-1 2xl:text-[0.9rem] text-primary text-[0.6rem] font-medium px-3 py-1">
+                    <Icon name="uil:calender" class="mr-1  text-primary " />
                     {{ formatTimeLeft(job.deadline) }}
                 </div>
                 <div class="absolute top-2 right-4 bottom-2 ">
-                    <button class="flex items-center border rounded border-primary text-xs text-bold font-roboto px-2 py-1
-                      text-gray-700  hover:text-gray-600 transition duration-200" aria-label="Save">
-                        <Icon name="heroicons-outline:bookmark" class="mr-2 text-[0.7rem]  text-primary" />
+                    <button class="flex items-center border hover:bg-primary rounded border-primary text-xs 2xl:text-sm text-bold font-roboto px-2 2xl:px-4 py-1
+                      text-primary  hover:text-gray-600 transition duration-200" aria-label="Save">
+                        <Icon name="heroicons-outline:bookmark" class="mr-2 text-[0.8rem]   hover:text-black" />
                         Save
                     </button>
                 </div>
-                <div class="flex flex-col  md:flex-row pt-8 md:space-x-0">
+                <div class="flex flex-col  md:flex-row pt-8  md:space-x-0">
                     <!-- Left Section: Logo and Entity Name -->
                     <div class="flex flex-col items-start mb-4 md:mb-0">
                         <VDropdown placement="right-top" :triggers="['focus',
@@ -90,15 +90,15 @@ const formatTimeLeft = (deadline) => {
                                 <ExampleComponent char="=" />
                             </template>
 
-                            <div v-if="job.entity.logo" class=" h-20 w-20  ml-36 md:ml-2">
+                            <div v-if="job.entity.logo" class=" h-20 w-20 2xl:h-24 2xl:w-24  ml-36 md:ml-2">
                                 <img :src="job.entity.logo" :alt="job.entity.name" class="h-20 w-20 " />
                             </div>
                             <div v-else>
-                                <img src="@/assets/img/logo_150.png" class="h-20 w-20 text-gray-500"
+                                <img src="@/assets/img/logo_150.png" class="h-20 w-20  text-gray-500"
                                     alt="Default Logo" />
                             </div>
                         </VDropdown>
-                        <p class="text-left dark:text-white text-gray-600 ml-36 md:ml-2 font-roboto text-xs  line-claim-2"
+                        <p class="text-left dark:text-white  2xl:font-lightbold text-gray-600 ml-36 md:ml-2 font-roboto text-xs 2xl:text-sm line-claim-2"
                             style="max-width: 100px;">
                             {{ job.entity.name }}
                         </p>
@@ -109,40 +109,43 @@ const formatTimeLeft = (deadline) => {
 
                     <div class="space-y-2  px-1  ">
                         <h2
-                            class="text-xs  dark:text-white line-clamp-1 font-roboto font-bold text-gray-700 sm:text-center ml-36 md:ml-1">
+                            class="text-xs 2xl:text-lg dark:text-white line-clamp-1 font-roboto font-bold text-gray-700 sm:text-center ml-36 md:ml-1">
                             {{
                                 job.title }}
                         </h2>
 
-                        <div class="flex items-center text-[0.7rem] text-gray-500">
+                        <div class="flex items-center text-[0.7rem] 2xl:text-[1rem]  text-gray-500">
                             <Icon name="majesticons:beaker" class="h-4 w-4 mr-4 text-primary" />
                             {{ job.sub_sector.sector.name || 'sector not specified' }}
                         </div>
-                        <div class="flex items-center text-[0.7rem] text-gray-500">
+                        <div class="flex items-center text-[0.7rem] 2xl:text-[1rem] text-gray-500">
                             <Icon name="material-symbols:arrow-top-left-rounded"
                                 class="h-4 w-4 rotate-180 mr-4 text-primary" />
                             {{ job.sub_sector.name || 'Location not specified' }}
                         </div>
-                        <div class="flex items-center text-[0.7rem] text-gray-500">
+                        <div class="flex items-center text-[0.7rem] 2xl:text-[1rem]  text-gray-500">
                             <Icon name="material-symbols:add-location" class="h-4 w-4 mr-4 text-primary" />
                             {{ job.job_cities[0]?.city.name || 'Location not specified' }}
                         </div>
-                        <div class="flex items-center text-[0.7rem] text-gray-500">
+                        <div class="flex items-center text-[0.7rem] 2xl:text-[1rem]  text-gray-500">
                             <Icon name="fa6-solid:unlock-keyhole" class="h-3 w-3 mr-4 text-primary" />
                             {{ job.years_of_experience }} - {{ job.max_years_of_experience || 'Any' }} years
                         </div>
-                        <div class="flex items-center text-[0.7rem] text-gray-500">
+                        <div class="flex items-center text-[0.7rem] 2xl:text-[1rem]  text-gray-500">
                             <Icon name="akar-icons:people-group" class="h-3 w-3 mr-4 text-primary" />
                             {{ job.number_of_applicants }} Position
                         </div>
                     </div>
+
+
                 </div>
 
             </div>
 
-            <div class="px-6  ">
-                <div class="flex justify-center items-center space-x-5">
-                    <div v-if="job.salary"
+
+            <div class="px-6 py-6  ">
+                <div class="flex justify-start items-start space-x-5 pb-4">
+                    <div v-if="job.type"
                         class="bg-primary rounded-full text-gray-200 flex items-center text-sm font-roboto py-1 px-2 text-center">
                         <Icon
                             name="streamline:interface-user-block-actions-block-close-denied-deny-geometric-human-person-single-up-user"
@@ -155,30 +158,34 @@ const formatTimeLeft = (deadline) => {
                         {{ formatSalary(job.salary) }}
                     </div>
                 </div>
-                <p class=" border-t-2 w-full border-gray-300 my-4"></p>
+                <p class=" border-t-2 w-full border-gray-300 my-"></p>
             </div>
 
             <!-- Bottom Section: Description and Actions -->
-            <div class="bg-white px-6  py-2 space-y-4 dark:bg-[#121a26]">
-                <p class="text-xs dark:text-white text-gray-700 leading-relaxed line-clamp-3 font-roboto ">
+            <div class="bg-white px-6   space-y-4 dark:bg-[#121a26]">
+                <p class="text-xs 2xl:text-lg dark:text-white text-gray-700 leading-relaxed line-clamp-3 font-roboto ">
                     {{ job.summary }}
+
                 </p>
                 <div class="flex justify-center items-center space-x-5">
                     <button
-                        class="text-primary hover:bg-[#7fccc2] border border-primary font-roboto  hover:text-gray-700 py-1 px-4 rounded  font-medium text-xs">Read
+                        class="text-primary 2xl:py-2 2xl:px-4 2xl:text-[1rem] font-lightbold hover:bg-[#7fccc2] border border-primary font-roboto  hover:text-gray-700 py-1 px-4 rounded  text-xs">Read
                         More</button>
+
                     <button
-                        class="bg-primary hover:bg-[#7fccc2] text-white  font-bold py-1 px-4 rounded    hover:text-gray-700 text-xs">
+                        class="bg-primary 2xl:py-2 2xl:px-4 2xl:text-[1rem] hover:bg-[#7fccc2] text-white  font-lightbold py-1 px-4 rounded    hover:text-gray-700 text-xs">
                         Apply Now
                     </button>
                 </div>
-                <div class="mt-4 flex justify-between items-center text-xs text-gray-500">
-                    <span>
-                        <Icon name="bx:show" class="h-3 w-4 " />
+
+                <!-- Bottom Section -->
+                <div class="px-4 py-2  flex justify-between items-center text-xs mt text-gray-500">
+                    <span class="2xl:text-lg">
+                        <Icon name="bx:show" class="h-4 w-4 " />
                         {{ formatViews(job.total_view_count) }} views
                     </span>
                     <span>
-                        <Icon name="heroicons-solid:share" class="h-5 w-5 mr-4" />
+                        <Icon name="heroicons-solid:share" class="h-5 w-5 2xl:w-6 2xl:h-6" />
                     </span>
                 </div>
             </div>

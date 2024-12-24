@@ -18,14 +18,14 @@ const setSelectedJobType = (type) => {
 
 
 <template>
-    <div>
-        <label class="block text-sm text-gray-700 dark:text-white mb-2">Type</label>
+    <div class="2xl:py-6 ">
+        <label class="block text-sm text-gray-700 dark:text-white mb-2 2xl:text-lg font-lightbold ml-1">Type</label>
         <div class="flex flex-wrap gap-2">
             <button @click="setSelectedJobType('bid')"
                 :class="['flex items-center px-4 py-1 text-gray-700 rounded-lg border text-[0.65rem] hover:bg-green-200 border-primary dark:text-white']"
                 :style="selectedJobType.includes('bid') ? { backgroundColor: '#009688' } : {}">
 
-                <span class="mr-1">Bid</span>
+                <span class="mr-1 xl:text-sm">Bid</span>
                 <Icon class="h-3" :name="selectedJobType.includes('bid') ? 'tabler:x' : 'ic:twotone-plus'" />
             </button>
 
@@ -36,7 +36,7 @@ const setSelectedJobType = (type) => {
                 :class="['flex items-center px-4 py-1 text-gray-700 rounded-lg border text-[0.65rem] hover:bg-green-200 border-primary dark:text-white']"
                 :style="selectedJobType.includes('contract') ? { backgroundColor: '#009688' } : {}">
 
-                <span class="mr-1">Contract</span>
+                <span class="mr-1 xl:text-sm">Contract</span>
                 <Icon class="h-3" :name="selectedJobType.includes('contract') ? 'tabler:x' : 'ic:twotone-plus'" />
             </button>
 
@@ -45,7 +45,7 @@ const setSelectedJobType = (type) => {
                 :style="selectedJobType.includes('full_time') ? { backgroundColor: '#009688' } : {}">
 
 
-                <span class="mr-1">Full Time
+                <span class="mr-1 xl:text-sm">Full Time
                 </span>
                 <Icon class="h-3" :name="selectedJobType.includes('full_time') ? 'tabler:x' : 'ic:twotone-plus'" />
 
@@ -54,9 +54,9 @@ const setSelectedJobType = (type) => {
             <button @click="setSelectedJobType('internship')"
                 :class="['flex items-center px-4 py-1 text-gray-700 rounded-lg border text-[0.65rem] hover:bg-green-200 border-primary dark:text-white']"
                 :style="selectedJobType.includes('internship') ? { backgroundColor: '#009688' } : {}">
-                Internship
 
-                <span class="mr-1">
+
+                <span class="mr-1 xl:text-sm">Internship
                 </span>
                 <Icon class="h-3" :name="selectedJobType.includes('internship') ? 'tabler:x' : 'ic:twotone-plus'" />
 
@@ -64,8 +64,8 @@ const setSelectedJobType = (type) => {
             <button @click="setSelectedJobType('part_time')"
                 :class="['flex items-center px-4 py-1 text-gray-700 rounded-lg border text-[0.65rem] hover:bg-green-200 border-primary dark:text-white']"
                 :style="selectedJobType.includes('part_time') ? { backgroundColor: '#009688' } : {}">
-                Part Time
-                <span class="mr-1">
+
+                <span class="mr-1 xl:text-sm"> Part Time
                 </span>
                 <Icon class="h-3" :name="selectedJobType.includes('part_time') ? 'tabler:x' : 'ic:twotone-plus'" />
 

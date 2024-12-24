@@ -171,7 +171,7 @@ watch(selectedRegion, () => {
 
                 <button @click.prevent="ClearSelectedRegion"
                     class="w-fit  bg-white  text-[0.6rem]  text-primary border-primary border-2  px-2 rounded-full">
-                    See
+                    Clear
                     All </button>
             </div>
 
