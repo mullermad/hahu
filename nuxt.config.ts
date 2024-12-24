@@ -1,5 +1,4 @@
 import path from "path";
-import Aura from "@primevue/themes/aura";
 
 const __dirname = path.resolve();
 export default defineNuxtConfig({
@@ -23,24 +22,11 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@nuxtjs/apollo",
     "@primevue/nuxt-module",
+    "@vueform/nuxt",
   ],
   plugins: ["@/plugins/floating-vue.client.js"],
   primevue: {
     autoImport: true,
-
-    options: {
-      theme: {
-        preset: Aura,
-        options: {
-          prefix: "p",
-          darkModeSelector: "system",
-          cssLayer: {
-            name: "primevue",
-            order: "tailwind-base, primevue, tailwind-utilities",
-          },
-        },
-      },
-    },
   },
   colorMode: {
     preference: "system", // default to system preference

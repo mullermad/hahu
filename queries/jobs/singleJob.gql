@@ -1,0 +1,64 @@
+query singleJob($id: String!) {
+  job(id: $id) {
+    id
+    title
+    telegram_view_count
+    total_web_view_count
+    total_view_count
+    expired
+    entity {
+      id
+      name
+      logo
+      capacity
+      phone_number
+      email
+      woreda_town {
+        subcity_zone {
+          region_city {
+            name
+          }
+        }
+      }
+    }
+    sub_sector {
+      id
+      name
+      sector {
+        id
+        name
+      }
+    }
+    position {
+      id
+      name
+    }
+    years_of_experience
+    max_years_of_experience
+    type
+    scraped_at
+
+    job_fields_of_study {
+      field_of_study {
+        name
+      }
+    }
+    job_cities {
+      city {
+        name
+      }
+    }
+    location
+    number_of_applicants
+    salary
+    summary
+    deadline
+    created_at
+    description
+    how_to_apply
+    source
+    application_method
+    application_url
+    application_email
+  }
+}

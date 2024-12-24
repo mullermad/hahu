@@ -2,5 +2,9 @@ query GetCities($limit: Int, $offset: Int, $filter: basic_cities_bool_exp) {
   cities: basic_cities(limit: $limit, offset: $offset, where: $filter) {
     id
     name
+    region {
+      id
+      name
+    }
   }
 }

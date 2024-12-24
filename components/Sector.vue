@@ -23,13 +23,18 @@ const props = defineProps({
 
 <template>
     <NuxtLink :to="{ path: '/jobs', query: { sector_id: `${id}` } }"
-        class="dark:bg-[#121a26] bg-white flex flex-col items-center justify-between border rounded-lg shadow-2xl p-6 w-44 h-[10rem] my-1 transition-shadow dark:hover:shadow-green-300 hover:shadow-md">
-        <img :src="image" alt="Sector Image" class="w-12 h-16 object-cover mb-1 mx-auto" />
-        <h2 class="text-md font-extrabold text-center mb-2 text-primary break-words max-w-[10rem] mx-auto">
+        class="dark:bg-[#121a26] bg-white flex flex-col items-center justify-center border rounded-lg shadow-xl w-52 h-[12rem] transition-shadow dark:hover:shadow-green-300 hover:shadow-md">
+        <img :src="image" alt="Sector Image" class="w-16 h-20 py-2 object-cover mx-auto" />
+        <h2 class="text-md font-extrabold text-center text-primary break-words max-w-[10rem] mx-auto">
             {{ sectorName }}
         </h2>
-        <p class="text-gray-800 text-[0.85rem] dark:text-white">{{ openPositions }} Open positions</p>
+        <p class="text-gray-800 text-[0.85rem] py-2 dark:text-white">
+            {{ openPositions }} Open positions
+
+        </p>
     </NuxtLink>
+
+
 </template>
 
 

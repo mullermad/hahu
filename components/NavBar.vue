@@ -131,7 +131,7 @@ const toggleTheme = () => {
         </div>
         <!--  Menu dropdown for small scrrounded-fulleens -->
         <div v-if="isMenuOpen"
-            class="lg:hidden fixed top-16 left-0 w-full flex flex-col items-start text-start bg-gray-100 dark:bg-[#011812] px-4 py-2 space-y-4 z-50 ">
+            class="lg:hidden fixed top-16  left-0 w-full flex flex-col items-start text-start bg-gray-100 dark:bg-[#011812] px-4 py-2 space-y-4 z-50 ">
 
             <!-- Navigation Links -->
             <NuxtLink to="/" :class="{ active: $route.hash == '' }" @click="closeMenu"

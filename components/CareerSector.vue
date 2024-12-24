@@ -71,19 +71,24 @@ onResult((response) => {
 
 </script>
 <template>
-    <div class="mx-auto text-center">
-        <h1 class="dark:text-white text-4xl font-extrabold text-gray-600 mb-1">Career Sectors</h1>
-        <p class="dark:text-white text-[0.8rem] font-bold text-gray-500 mb-4 font-robot">
+    <div class=" text-center">
+        <h1 class="dark:text-white text-4xl 2xl:text-5xl font-extrabold text-gray-600 p-2">Career Sectors</h1>
+        <p class="dark:text-white text-[0.8rem] 2xl:text-lg font-lightbold text-gray-500 mb-8 font-robot">
             Based on the local labor market trend in Ethiopia, we categorize our vacancies into fourteen sectors.
         </p>
 
         <!-- Sectors List -->
-        <div class="flex flex-wrap justify-center mx-24">
+        <div
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6 w-full max-w-screen-2xl mx-auto px-4">
             <!-- Loop through each sector -->
-            <div v-for="sector in sectors" :key="sector.id" class="w-full sm:w-1/4 md:w-1/6 lg:w-1/8">
-                <Sector :image="getImageForSector(sector.name)" :id="sector.id" :sectorName="sector.name"
+            <div v-for="sector in sectors" :key="sector.id" class="flex justify-center">
+                <Sector :image="getImageForSector(sector.name)" :id="sector.id" :sectorName="sector.name" screen
                     :openPositions="sector.active_jobs?.count ?? 0" />
             </div>
         </div>
+
+
+
+
     </div>
 </template>

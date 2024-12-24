@@ -62,7 +62,6 @@ const unwatch = watch(() => props.items, () => {
             //controlling watch effects
             unwatch()
         }
-
     })
 
 }, {
@@ -71,44 +70,27 @@ const unwatch = watch(() => props.items, () => {
 })
 
 
-// onMounted(() => {
-//     setTimeout(() => {
-//         if (props.modelValue?.id) {
-//             props.items.forEach((value) => {
-
-//                 if (props.modelValue?.id === value.id) {
-
-//                     selectItem(value)
-//                 }
-
-//             })
-//         }
-//     }, 500)
-
-// })
-
-
 </script>
 
 
 <template>
     <div ref="dropdownRef" class="relative ">
         <!-- Selected Items and Dropdown Trigger -->
-        <div class="px-4 py-1 dark:bg-slate-600 bg:text-white border rounded bg-white cursor-pointer focus:ring-2 focus:ring-primary transition-all duration-200"
+        <div class="px-4 py-1 hover:border-primary dark:bg-slate-600 dark:text-white bg:text-white border rounded bg-white cursor-pointer focus:ring-2 focus:ring-primary transition-all duration-200"
             @click="toggleDropdown(!showDropdown)" :aria-expanded="showDropdown">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between  dark:text-white">
                 <!-- Selected Item -->
                 <div v-if="selectedItems" class="flex items-center gap-2">
-                    <span class="line-clamp-1 px-3   rounded">
+                    <span class="line-clamp-1 px-3 dark:text-white  text-sm text-gray-600  rounded">
                         {{ selectedItems.name }}
                     </span>
                 </div>
 
                 <!-- Placeholder -->
-                <span v-else class="text-gray-500">{{ placeholder }}</span>
+                <span v-else class="dark:text-white text-sm text-gray-500">{{ placeholder }}</span>
 
                 <!-- Remove Icon for selected item -->
-                <span v-if="selectedItems" class="ml-2 cursor-pointer text-gray-500 "
+                <span v-if="selectedItems" class="ml-2 dark:text-white cursor-pointer text-gray-500 "
                     @click.stop="removeItem(selectedItems)">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -133,12 +115,12 @@ const unwatch = watch(() => props.items, () => {
             class="absolute dark:bg-slate-600 bg:text-white z-10 w-full mt-1 bg-white border rounded shadow-md max-h-40 overflow-y-auto">
             <!-- Search Field -->
             <input v-model="searchQuery" type="text" placeholder="Search"
-                class="w-[90%] mx-2 mt-2 border border-primary px-3 py-1 rounded-md text-gray-600 focus:ring-2 focus:ring-primary focus:outline-none" />
+                class="w-[90%] mx-2 mt-2 border  border-primary px-3 py-1 rounded-md text-gray-600 dark:bg-slate-600 dark:focus:border focus:ring-2 focus:ring-primary focus:outline-none" />
 
             <!-- display Items -->
             <div v-if="props.items.length > 0" class="mt-2">
                 <div v-for="(item, index) in props.items" :key="index" @mousedown.prevent="selectItem(item)"
-                    class="px-4 py-1 cursor-pointer hover:bg-gray-100">
+                    class="px-4 py-3 cursor-pointer dark:text-white text-gray-700 line-claim-1 font-bold text-xs hover:bg-gray-100  border-b border-gray-300  dark:hover:bg-gray-500">
                     {{ item.name }}
                 </div>
             </div>

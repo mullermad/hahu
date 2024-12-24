@@ -50,13 +50,13 @@ const toggleTheme = () => {
 
 <template>
     <nav
-        class=" md:flex hidden px-0 py-1 bg-opacity-10 backdrop-blur-md  items-center justify-between duration-300 fixed top-0 left-0 w-full z-50 bg-gray-100 dark:bg-[#011812]  transition-shadow ">
+        class=" md:flex hidden px-0 py-1 2xl:p-2 bg-opacity-10 backdrop-blur-md  items-center justify-between duration-300 fixed top-0 left-0 w-full z-50 bg-gray-100 dark:bg-[#011812]  transition-shadow ">
 
         <!-- Logo -->
         <div class=" flex items-center  space-x-3 ml-12 mt-1  ">
             <NuxtLink to="/">
                 <div><svg viewBox="0 0 270 50"
-                        class="  lg:w-[120px] xl:w-[160px] 2xl:w-[220px] !w-[90px] !h-[18px]  bg-opacity-50 backdrop-blur-md dark:text-white"
+                        class="  lg:w-[120px] xl:w-[160px] 2xl:w-[300px] !w-[90px] !h-[18px]  bg-opacity-50 backdrop-blur-md dark:text-white"
                         fill="none" xmlns="http://www.w3.org/2000/svg">
                         <title>HaHuJobs Logo</title>
                         <desc>This is the official logo of HaHuJobs</desc>
@@ -92,21 +92,21 @@ const toggleTheme = () => {
 
         <!-- Navigations -->
         <div
-            class="flex items-center space-x-1 mr-6 mt-3   md:flex-row space-y-2 md:space-y-0 md:space-x-6 p-2 md:p-0 ">
+            class="flex items-center space-x-1 2xl:space-x-8 mr-6 mt-3   md:flex-row space-y-2 md:space-y-0 md:space-x-6 p-2 md:p-0 ">
             <NuxtLink to="/" :class="{ active: $route.hash == '' }"
-                class="dark:text-white dark:hover:text-primary font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs hover:text-primary focus:text-primary">
+                class="dark:text-white dark:hover:text-primary font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs 2xl:text-lg  hover:text-primary focus:text-primary">
                 Home
             </NuxtLink>
 
 
 
             <NuxtLink to="/#about" :class="{ active: $route.hash == '#about' }"
-                class="dark:text-white dark:hover:text-primary font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs hover:text-primary focus:text-primary">
+                class="dark:text-white dark:hover:text-primary font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs 2xl:text-lg hover:text-primary focus:text-primary">
                 About
             </NuxtLink>
 
             <NuxtLink @click.prevent="openJobsModal" :class="{ active: $route.hash == '#job' }"
-                class="dark:text-white dark:hover:text-primary font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs hover:text-primary focus:text-primary">
+                class="dark:text-white dark:hover:text-primary font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs 2xl:text-lg hover:text-primary focus:text-primary">
 
                 Jobs
             </NuxtLink>
@@ -115,16 +115,16 @@ const toggleTheme = () => {
             <JobsModal :isOpen="isJobsModalOpen" @close="closeJobsModal" />
 
             <NuxtLink to="/#vacancy" :class="{ active: $route.hash == '#vacancy' }"
-                class="dark:text-white dark:hover:text-primary font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs hover:text-primary focus:text-primary">
+                class="dark:text-white dark:hover:text-primary font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs 2xl:text-lg hover:text-primary focus:text-primary">
                 Post Vacancy
             </NuxtLink>
             <NuxtLink to="/#contact"
-                class="dark:text-white dark:hover:text-primary font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs hover:text-primary focus:text-primary">
+                class="dark:text-white dark:hover:text-primary font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs 2xl:text-lg hover:text-primary focus:text-primary">
                 Contact
             </NuxtLink>
 
             <NuxtLink @click="toggleTheme"
-                class="dark:text-white dark:hover:text-primary font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs hover:text-primary focus:text-primary">
+                class="dark:text-white dark:hover:text-primary font-roboto focus:font-extrabold  active:font-extrabold text-gray-600 text-xs 2xl:text-lg hover:text-primary focus:text-primary">
                 <svg v-if="colorMode.value === 'dark'" xmlns="http://www.w3.org/2000/svg" width="28" height="14"
                     viewBox="0 0 24 24">
                     <path fill="currentColor"
@@ -143,15 +143,16 @@ const toggleTheme = () => {
             </NuxtLink>
 
             <!-- Login and signup -->
-            <NuxtLink to="/login" class="text-[0.6rem] text-white bg-primary border rounded-md px-2 py-1 transition-colors duration-800 ease-in-out dark:text-white 
+            <NuxtLink to="/login" class="text-[0.6rem] 2xl:text-[0.8rem] text-white bg-primary border rounded-md px-2 py-1 transition-colors duration-800 ease-in-out dark:text-white 
          hover:text-gray-600 hover:bg-[#7fccc2] hover:delay-200">
                 Login
             </NuxtLink>
 
 
 
-            <span class="dark:text-white focus:font-extrabold  active:font-extrabold text-black text-[0.7rem]">Or</span>
-            <NuxtLink to="/signup" class="text-[0.6rem] text-white bg-primary border rounded-md px-2 py-1 transition-colors duration-800 ease-in-out dark:text-white 
+            <span
+                class="dark:text-white focus:font-extrabold  active:font-extrabold text-black text-[0.7rem] 2xl:text-[0.8rem]">Or</span>
+            <NuxtLink to="/signup" class="text-[0.6rem] 2xl:text-[0.8rem] text-white bg-primary border rounded-md px-2 py-1 transition-colors duration-800 ease-in-out dark:text-white 
          hover:text-gray-600 hover:bg-[#7fccc2] hover:delay-200">
                 Sign up
             </NuxtLink>

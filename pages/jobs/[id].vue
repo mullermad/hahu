@@ -1,19 +1,19 @@
 <script setup>
 import { ref } from 'vue'
-import JobsQuery from "@/queries/jobs/jobs.gql";
-import positionQuery from "@/queries/position/positions.gql";
-import getJobs from "@/composables/jobs/getJobs.js";
+const route = useRoute();
+import getSingle from "@/composables/jobs/get-single.js";
+import jobInfoQuery from "@/queries/jobs/singleJob.gql";
 import getData from "@/composables/jobs/get.js";
+import positionQuery from "@/queries/position/positions.gql";
 import sectorQuery from "@/queries/jobs/sectors.gql"
 import cityQuery from "@/queries/jobs/cities.gql"
-import job_applicationImage from '@/assets/img/filterimages.png';
+import applicationImage from '@/assets/img/jobDetail.png';
 
-//  reactive varables
-const route = useRoute();
+const job = ref([])
+const jobId = ref("");
 const search = ref("")
 const titleSearch = ref("")
 const searchResult = ref("")
-const jobs = ref([])
 const Positions = ref([])
 const Sectors = ref([])
 const City = ref([])
@@ -25,7 +25,7 @@ const selectedSector = ref({
 });
 const selectedCity = ref("");
 const selectedJobType = ref([])
-const showFilters = ref(true);
+const showFilters = ref(false);
 const yearsofexperiancerange = ref([0, 10]);
 const isChecked = ref(false);
 const selectedRegion = ref([]);
@@ -66,17 +66,17 @@ const filterJob = computed(() => {
             }
         }
     })
-    // else {
-    //     and.push({
-    //         "sub_sector": {
-    //             "sector": {
-    //                 "id": {
-    //                     "_eq": `${route.query.sector_id}`
-    //                 }
-    //             }
-    //         }
-    //     })
-    // }
+    else {
+        and.push({
+            "sub_sector": {
+                "sector": {
+                    "id": {
+                        "_eq": `${route.query.sector_id}`
+                    }
+                }
+            }
+        })
+    }
 
 
     //filter by expereince
@@ -181,44 +181,8 @@ const searchDone = () => {
 const UpdateSearchTerm = (v) => {
     search.value = v;
 }
-//dynamically changing styles of slider background color
-watch(isChecked, (newValue) => {
-    const primaryColor = newValue ? "#babebe" : "#009688";
-
-    // Remove existing custom style if it exists
-    let customStyle = document.getElementById("custom-form-bg-primary");
-    if (customStyle) {
-        customStyle.remove();
-    }
-
-    // Add a new style element to override
-    customStyle = document.createElement("style");
-    customStyle.id = "custom-form-bg-primary";
-    customStyle.innerHTML = `.form-bg-primary { background-color: ${primaryColor} !important; }`;
-    document.head.appendChild(customStyle);
-})
-//job 
-const {
-    onResult: onJobResult,
-    loading: loadingJob,
-    refetch: refetchJob,
-} = getJobs(JobsQuery, {
-    limit: limit,
-    offset: offset,
-    filter: filterJob,
 
 
-});
-
-
-//Handle Job results
-onJobResult((response) => {
-    if (response.data && response.data.jobs) {
-        jobs.value = response.data.jobs;
-    } else {
-        console.log("No jobs found or error in response");
-    }
-});
 
 //position
 const {
@@ -281,9 +245,55 @@ onCityResult((response) => {
         console.log("No city found or error in response");
     }
 });
+onMounted(() => {
+    jobId.value = route.params.id;  // Correct way to assign to a ref
+    console.log("oooooooooooooooooooooooooo", jobId.value);  // Log immediately after setting the value
+});
+
+watch(
+    () => route.params.id, // Watch the route parameter `id`
+    (newId) => {
+        jobId.value = newId;  // Update the jobId reactive variable when the route's id changes
+        console.log('jobId updated inside watcher:', newId);  // Log the updated jobId
+    },
+    { immediate: true }  // Run the watcher immediately with the current value of route.params.id
+);
+console.log('jobId updated Outside watcher:', jobId.value);  // Log the updated jobId
+
+//job 
+const {
+    onResult: onJobResult,
+    loading: loadingJob,
+    refetch: refetchJob,
+} = getSingle(jobInfoQuery,
+    jobId.value
+);
 
 
+//Handle Job results
+onJobResult(({ data }) => {
+    if (data && data?.job) {
+        job.value = data?.job;
 
+    }
+});
+//dynamically changing styles of slider background color
+watch(isChecked, (newValue) => {
+    const primaryColor = newValue ? "#babebe" : "#009688";
+
+    // Remove existing custom style if it exists
+    let customStyle = document.getElementById("custom-form-bg-primary");
+    if (customStyle) {
+        customStyle.remove();
+    }
+
+    // Add a new style element to override
+    customStyle = document.createElement("style");
+    customStyle.id = "custom-form-bg-primary";
+    customStyle.innerHTML = `.form-bg-primary { background-color: ${primaryColor} !important; }`;
+    document.head.appendChild(customStyle);
+})
+//TODO remove unnecessary query
 </script>
 
 <template>
@@ -314,7 +324,8 @@ onCityResult((response) => {
                             <ClientOnly>
                                 <Vueform>
                                     <SliderElement :disabled="isChecked" :default="[0, 10]" :min="0" :max="10"
-                                        @change="yearsofexperiancerange = $event" v-model="yearsofexperiancerange" />
+                                        @change="yearsofexperiancerange = $event" v-model="yearsofexperiancerange"
+                                        class="" />
                                 </Vueform>
                             </ClientOnly>
 
@@ -347,27 +358,7 @@ onCityResult((response) => {
                     </div>
                 </div>
 
-                <!--left side card-->
-                <div
-                    class="dark:bg-[#121a26] ml-5 py-4  bg-white flex flex-col items-center rounded-lg w-[220px] h-[400px] shadow-sm px-2">
-                    <img :src="job_applicationImage" alt="Sector Image" class="w-40 h-40 mb-6 mx-auto" />
 
-                    <p class="text-gray-600 text-[0.6rem] dark:text-white text-left leading-relaxed mb-4">
-                        Provides human resources and related services starting from job vacancy announcements,
-                        recruitment, all the way to human resources management until termination. This
-                        deployment also
-                        offers unique
-                        services to a category of businesses that operate within industry parks, in addition to
-                        foreign
-                        employment agencies.
-                    </p>
-                    <div class="flex justify-end w-full">
-                        <button
-                            class="text-white text-[0.6rem] hover:text-[#82d3cb] bg-primary p-1 rounded font-bold flex items-center">
-                            Know more
-                        </button>
-                    </div>
-                </div>
 
             </div>
 
@@ -397,7 +388,7 @@ onCityResult((response) => {
                         </div>
 
                         <!--  Sector Filter -->
-                        <div class="flex-grow w-full lg:w-1/5 mb-4  lg:mb-0">
+                        <div class="flex-grow w-full lg:w-1/5 mb-4 lg:mb-0">
                             <MyTextfeild @updateSearch="UpdateSearchTerm" :items="Sectors" placeholder="Select Sector"
                                 v-model="selectedSector" @update:modelValue="selectedSector = $event" />
 
@@ -411,42 +402,44 @@ onCityResult((response) => {
                     </div>
                 </div>
 
-                <!-- Job Count -->
-                <h5 class="text-xl ml-4 font-bold text-gray-700 dark:text-white p-4">
-                    Showing <span>{{ jobs.length }}</span> of <span>{{ jobs.length }}</span> posts
-                </h5>
-
                 <!-- loadingJob and Job Display -->
-                <div v-if="loadingJob"
-                    class="flex flex-col items-center justify-center h-screen text-center mx-auto px-4">
-                    <h2 class="text-2xl font-semibold text-gray-700">Loading...</h2>
-                </div>
+                <div class="flex justify-between">
+                    <div>
+                        <div v-if="loadingJob"
+                            class="flex flex-col items-center justify-center h-screen text-center mx-auto px-4">
+                            <h2 class="text-2xl font-semibold text-gray-700">Loading...</h2>
+                        </div>
 
-
-                <div v-else>
-                    <div v-if="jobs.length === 0"
-                        class="flex flex-col items-center justify-center h-screen text-center  gap-4">
-                        <img src="@/assets/img/search-not-found.svg" alt="No results found" class="w-52 h-52 mb-6" />
-                        <h2 class="text-2xl font-semibold dark:text-white text-gray-700">
-                            Sorry, we couldn’t find any match for your search.
-                        </h2>
+                        <div v-else>
+                            <div class="mt-4 mr-4  ">
+                                <JobsSingleCard :job="job" />
+                            </div>
+                        </div>
                     </div>
 
-                    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
-                        <JobsCard v-for="job in jobs" :key="job.id" :job="job" />
+                    <!--right side card-->
+                    <div
+                        class="dark:bg-[#121a26] mt-6  flex-shrink-0 mr-5 py-4 px-4  bg-white flex flex-col items-center rounded-lg w-[260px] h-[350px] shadow-sm ">
+                        <img :src="applicationImage" alt="Sector Image" class="w-40 h-40 mb-6 mx-auto" />
+
+                        <p class="text-gray-600 text-[0.6rem] dark:text-white text-left leading-relaxed mb-4">
+                            HaHuJobs the largest data-driven job matching and labor market information platform in
+                            Ethiopia. With various service deployments to address the Ethiopian labor market needs; we
+                            stand at the forefront of the local digital job matching industry.
+
+
+                        </p>
+                        <div class="flex justify-end w-full">
+                            <button
+                                class="text-white text-[0.6rem] hover:text-[#82d3cb] bg-primary p-1 rounded font-bold flex items-center">
+                                Know more
+                            </button>
+                        </div>
                     </div>
 
-
-
                 </div>
+
             </div>
         </div>
     </div>
 </template>
-<style>
-/* Apply custom styles globally */
-.form-bg-primary {
-    background-color: var(--vf-primary) !important;
-    /* Force the use of --vf-primary */
-}
-</style>

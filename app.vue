@@ -6,20 +6,31 @@
   </div>
 </template>
 <style>
-/* width */
-::-webkit-scrollbar {
-  width: 4px;
+:root {
+  --slider-connect-bg: #009688;
+  --slider-tooltip-bg: #009688;
+
+  --slider-handle-ring-color: #3b82f630;
+  --slider-height: 10px;
+  --slider-radius: 6px;
+  --slider-handle-bg: #009688;
+  --slider-handle-ring-color: #009688;
+
+  --vc-clr-primary: #009688;
+  --vc-clr-secondary: #009688;
+  --vc-clr-white: #ffffff;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px transparent;
+/* width */
+::-webkit-scrollbar {
+  width: 2px;
 }
+
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #009688;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 
 /* Handle on hover */

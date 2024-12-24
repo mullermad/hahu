@@ -85,28 +85,31 @@ onResult((response) => {
 
 <template>
     <Transition name="modal">
-        <div v-if="isOpen"
-            class="fixed inset-0 overflow-auto h-screen  bg-opacity-80 flex items-start justify-center z-50 ">
-            <div class="bg-white shadow-lg dark:bg-gray-800 rounded-lg mt-5 px-8 pb-8  ">
+        <div v-if="isOpen" class="fixed inset-0  overflow-auto h-screen bg-opacity-80 flex items-start justify-center top-10 
+           2xl:top-16">
+            <div class="bg-white shadow-lg dark:bg-gray-800 rounded-lg px-8 
+          2xl:ml-4 2xl:w-[1700px] 2xl:h-[660px]">
                 <!-- Modal Header -->
                 <div class="flex justify-between  items-center p-1  dark:border-gray-700">
                     <div class="flex items-center px-2 mt-4">
                         <button @click="handleClose">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                                 stroke="currentColor" aria-hidden="true"
-                                class="lg:w-6 lg:h-5 h-4 w-4  text-gray-600 hover:text-primary">
+                                class="lg:w-6 lg:h-5 h-4 w-4 xl:h-8 xl:w-8  border-black hover:bg-green-100 text-gray-500  hover:text-primary p-1">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
                             </svg>
+
                         </button>
-                        <span class="ml-5 text-sm font-extrabold text-gray-600 dark:text-white">Job by sector</span>
+                        <span class="ml-5 text-sm 2xl:text-lg font-extrabold text-gray-600 dark:text-white">Job by
+                            sector</span>
                     </div>
 
-                    <div class="flex items-left space-x-4">
+                    <div class="flex items-left space-x-4 ">
                         <NuxtLink
-                            class="text-primary hover:text-white hover:bg-primary text-[0.62rem] ml-24 lg:ml-2 mt-3 md:mt-4 p-1 md:p-2 lg:px-3 lg:py-1 font-semibold flex transition duration-700 ease-in-out items-center border rounded-md">
+                            class="text-primary border border-primary hover:text-white 2xl:text-[0.9rem] hover:bg-primary text-[0.62rem] ml-24 lg:ml-2 mt-3 md:mt-4 p-1 md:p-2 lg:px-3 lg:py-1 xl:p-2 font-semibold flex transition duration-700 ease-in-out items-center  rounded-md">
                             View All
                             <span class="lg:justify-start">
-                                <svg class="w-2 h-2 ml-1 md:w-4 md:h-4 lg:w-3 lg:h-5" fill="currentColor"
+                                <svg class="w-2 h-2 ml-1 md:w-4 md:h-4 lg:w-3 lg:h-5 xl:w-5 xl:h-6" fill="currentColor"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path
                                         d="M12.293 5.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 12H3a1 1 0 110-2h12.586l-3.293-3.293a1 1 0 010-1.414z" />
@@ -118,11 +121,10 @@ onResult((response) => {
 
                 <!-- Modal Content -->
 
-                <div class="w-full grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4   ">
-                    <!-- <SingleJob :title="sectors[0].name" :description="sectors[0].description"
-                        :openPositions="sectors[0].openPositions" @click="handleClose" /> -->
+                <div class="w-full grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4    ">
+
                     <!-- First column -->
-                    <div class="grid grid-rowspb-1-4">
+                    <div class="grid grid-rows">
                         <SingleJob v-for="sector in sectors.slice(0, 4)" :key="sector.id"
                             :image="getImageForSector(sector.name)" :id="sector.id" :title="sector.name"
                             :description="sector.description" :openPositions="sector.active_jobs?.count ?? 0"
@@ -149,21 +151,22 @@ onResult((response) => {
                     </div>
 
                     <!-- Fourth column -->
-                    <div class="grid grid-rows-4">
-                        <SingleJob v-for="sector in sectors.slice(12, 15)" :key="sector.id"
+                    <div class="grid grid-rows-4 gap-2 ">
+                        <SingleJob v-for="sector in sectors.slice(13, 15)" :key="sector.id"
                             :image="getImageForSector(sector.name)" :id="sector.id" :title="sector.name"
                             :description="sector.description" :openPositions="sector.active_jobs?.count ?? 0"
                             @click="handleClose" />
 
                         <div class="row-span-2 mt-auto">
-                            <img :src="jobImage" alt="Job Image" class="w-60 h-28 object-contain " />
-                        </div>
-                        <div class="flex justify-end">
-                            <div class=""><span
-                                    class=" font-light text-[0.6rem] text-gray-5P00 dark:text-primary-dark-2">
-                                    Powered by </span><img :src="HahuLogoFooter" alt="" class="w-20 pl-6">
+                            <img :src="jobImage" alt="Job Image" class="w-64 h-52   object-contain " />
+                            <div class="flex justify-end">
+                                <div class=""><span
+                                        class=" font-light text-[0.6rem] text-gray-500 dark:text-primary-dark-2">
+                                        Powered by </span><img :src="HahuLogoFooter" alt="" class="w-20 pl-6">
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -174,8 +177,6 @@ onResult((response) => {
         </div>
     </Transition>
 </template>
-
-
 
 <style scoped>
 .modal-enter-active,

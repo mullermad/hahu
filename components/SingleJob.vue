@@ -33,17 +33,17 @@ const emit = defineEmits(['click'])
 <template>
     <NuxtLink @click="emit('click')" :to="{ path: '/jobs', query: { sector_id: `${id}` } }">
         <div
-            class="dark:bg-gray-700 bg-gray-100 hover:bg-[#f0faf2]  mx-1 flex items-center group  rounded-md  border-none p-6 w-72  transition-shadow ">
+            class="dark:bg-gray-700 bg-gray-200 hover:bg-[#e4f2ed]  mx-1 flex items-center group  rounded-md  border-none p-6 w-72 2xl:w-auto  transition-shadow ">
             <!-- Job Image (small left side) -->
-            <img :src="image" alt="Job Image" class="w-6 h-5 object-cover mr-4" />
+            <img :src="image" alt="Job Image" class="w-8 h-7 object-cover mr-4" />
 
             <!-- Job Info on the right (flex column to stack title and description) -->
-            <div class="flex flex-col w-full">
+            <div class="flex flex-col w-full px-4">
                 <!-- Job Title and Open Positions -->
-                <div class="flex items-center justify-start w-full">
+                <div class="flex items-center justify-start w-full  ">
                     <!-- Job Title -->
                     <h2
-                        class="text-[1rem] dark:text-white text-gray-600 font-bold overflow-hidden text-ellipsis whitespace-nowrap">
+                        class="text-[1rem] py-1 2xl:text-lg dark:text-white text-gray-600 font-bold overflow-hidden text-ellipsis whitespace-nowrap">
                         {{ title }}
                     </h2>
                     <!-- Open Positions -->
@@ -54,7 +54,7 @@ const emit = defineEmits(['click'])
 
 
                 <!-- Job Description -->
-                <p class="text-gray-500 text-[0.7rem] dark:text-white line-clamp-2 mt-1">
+                <p class="text-gray-500 text-[0.7rem] 2xl:text-[0.8rem] dark:text-white line-clamp-2 mt-1">
                     {{ description }}
                 </p>
             </div>

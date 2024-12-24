@@ -20,22 +20,27 @@ const props = defineProps({
 
 <template>
     <div
-        class="dark:bg-[#121a26] bg-white flex flex-col items-left border border-transparent rounded-lg shadow-sm p-5 w-[20rem] m-3 h-[25rem] transition-shadow hover:shadow-xl hover:border-green-500">
-        <img :src="image" alt="Sector Image" class="w-45 h-40 object-cover rounded-full mb-8 mx-auto" />
-        <h2 class="text-[0.9rem] font-bold text-left mb-2 ">{{ ServiceName }}</h2>
-        <p class="text-gray-600 text-xs dark:text-white text-left leading-relaxed mb-2">
-            {{ Description }}
+        class="dark:bg-[#121a26] bg-white flex flex-col items-center border border-transparent rounded-lg shadow-sm p-5 w-[20rem] m-3 h-[25rem] 2xl:w-[25rem] 2xl:h-[34rem] transition-shadow hover:shadow-xl hover:border-green-500">
 
-        </p>
-        <div class="flex justify-end">
-            <button class="text-primary hover:text-[#82d3cb] font-bold text-xs  mt-3 flex items-center">
-                Explore more
-                <svg class="w-4 h-4 ml-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path
-                        d="M12.293 5.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 12H3a1 1 0 110-2h12.586l-3.293-3.293a1 1 0 010-1.414z" />
-                </svg>
-            </button>
+
+        <!-- Content Section (Text pushed to the bottom) -->
+        <div class="flex flex-col mt-auto  w-full">
+            <!-- Image Section (Centered at the top) -->
+            <img :src="image" alt="Sector Image"
+                class="w-45 h-40 2xl:w-64 2xl:h-60 object-cover rounded-full mb-4 mx-auto" />
+            <div class="pt-6">
+                <h2 class="text-[0.9rem]   text-primary 2xl:text-lg font-extrabold text-center mb-2 ">{{ ServiceName
+                    }}
+                </h2>
+                <p class="text-gray-500 text-xs 2xl:text-[1rem] dark:text-white text-center leading-relaxed mb-2">
+                    {{ Description }}
+                </p>
+            </div>
+
         </div>
-
     </div>
+
+
+
+
 </template>

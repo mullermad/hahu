@@ -59,7 +59,7 @@ onBeforeUnmount(() => {
 
 <template>
     <div class="text-center">
-        <h1 class="dark:text-white text-4xl font-extrabold text-gray-600 mb-4 mt-16">News & Events</h1>
+        <h1 class="dark:text-white text-4xl 2xl:text-5xl font-extrabold text-gray-600 mb-6 mt-16">News & Events</h1>
 
         <!-- Event containers (responsive to screen sizes) -->
         <div class="flex gap-[3rem] items-center justify-center">
@@ -85,7 +85,7 @@ onBeforeUnmount(() => {
 
         <div class="flex justify-center mt-6">
             <button
-                class="bg-primary transition duration-700 ease-in-out hover:bg-[#a1d1cc] hover:text-gray-700 text-white  text-[0.68rem] mt-3 flex items-center justify-center h-8 w-28 rounded-md">
+                class="bg-primary transition duration-700 ease-in-out hover:bg-[#a1d1cc] hover:text-gray-700 text-white  text-[0.68rem] 2xl:text-md mt-3 flex items-center justify-center h-8 w-28 rounded-md">
                 More blogs
                 <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" width="12" height="22" viewBox="0 0 20 20">
                     <g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">

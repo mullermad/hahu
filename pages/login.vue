@@ -112,7 +112,7 @@ const handleSubmit = () => {
 <style>
 /* width */
 ::-webkit-scrollbar {
-    width: 4px;
+    width: 2px;
 }
 
 /* Track */
@@ -123,7 +123,7 @@ const handleSubmit = () => {
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #009688;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
 /* Handle on hover */
