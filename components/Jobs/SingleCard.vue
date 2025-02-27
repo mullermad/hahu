@@ -3,22 +3,36 @@ import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
 import { Icon } from '@iconify/vue';
 import JobsAnalysisQuery from "@/queries/jobAnalysis.gql";
 import getAnalysis from "@/composables/jobs/get-single.js";
+
+const jobId = ref("");
+const jobAnalysis = ref({});
+const route = useRoute();
+const isJobsModalOpen = ref(false);
+const idJob = ref(route.params.id);
+
+
 const props = defineProps({
     job: {
         type: Object,
         required: true,
     },
 });
-
-const jobId = ref("");
-const jobAnalysis = ref({});
-const route = useRoute();
-
 onMounted(() => {
     jobId.value = route.params.id;
     console.log("Job ID:", jobId.value);
 });
 
+
+// Modal and menu functions
+const openJobsModal = () => {
+    isJobsModalOpen.value = true;
+    console.log("Modal Opened", isJobsModalOpen.value);
+
+};
+
+const closeJobsModal = () => {
+    isJobsModalOpen.value = false;
+};
 // Get analysis query
 const {
     onResult: onJobResult,
@@ -46,8 +60,6 @@ function formatViews(views) {
     }
     return views;
 }
-
-
 const categories = ref({
     Post: [],
     KPI: [],
@@ -78,19 +90,19 @@ const calculatePercentage = (dataValue, min, max) => {
 <template>
 
 
-    <div
-        class="bg-white dark:bg-[#121a26] rounded-lg shadow-lg   cursor-pointer  transition-shadow duration-300 h-full ">
-        <div class="relative">
+    <div class="bg-white  dark:bg-[#121a26] rounded-lg    cursor-pointer  transition-shadow duration-300 h-full ">
+        <div class="relative ">
 
 
-            <div class="flex flex-col  md:flex-row mt-6 pt-8 md:space-x-0 ">
+            <div class="flex flex-col items-center justify-start   md:flex-row mt-6 pt-8 md:space-x-0 ">
                 <!-- Left Section: Logo and Entity Name -->
-                <div class="flex flex-col items-start  md:mb-0 bg-gray-200 ml-6 mr-2 px-0.5 py-4">
-                    <div v-if="job.entity?.logo" class=" mr-4 ml-36 md:ml-4 p-1 py-2   ">
-                        <img :src="job.entity?.logo" :alt="job.entity.name" class="h-32 w-36 " />
+                <div class="ml-2 mt-6 px-4 py-4 2xl:px-8 2xl:py-8 ">
+                    <div v-if="job.entity?.logo" class="bg-gray-200 rounded-xl  mr-4  md:ml-4 p-5  ">
+                        <img :src="job.entity?.logo" :alt="job.entity.name"
+                            class="rounded-xl h-32 w-36 xl:w-44 xl:h-44 " />
                     </div>
-                    <div v-else>
-                        <img src="@/assets/img/logo_150.png" class="h-24 w-24 bg-gray-600 text-gray-500"
+                    <div v-else class="bg-gray-200 rounded-xl  mr-4  md:ml-4 p-4   ">
+                        <img src="@/assets/img/logo_150.png" class="rounded-xl h-32 w-36 xl:w-36 xl:h-36"
                             alt="Default Logo" />
                     </div>
 
@@ -99,24 +111,24 @@ const calculatePercentage = (dataValue, min, max) => {
 
                 <!-- Right Section: Job Details -->
 
-                <div class="space-y-2 2xl:space-y-5  px-1  ">
+                <div class="space-y-2   px-1  ">
                     <h2
-                        class="text-lg 2xl:text-xl dark:text-white line-clamp-1 font-roboto font-semibold text-gray-700 sm:text-center ml-36 md:ml-1">
+                        class="text-lg 2xl:text-3xl dark:text-white line-clamp-1 font-roboto font-extrabold text-gray-700 sm:text-center  md:ml-1">
                         {{
                             job.title }}
                     </h2>
                     <p
-                        class="text-[0.7rem] 2xl:text-[0.9rem]  dark:text-white line-clamp-1 font-roboto  text-gray-500 sm:text-center md:text-start ml-36 md:ml-2">
+                        class="text-[0.7rem] 2xl:text-[0.9rem]  dark:text-white line-clamp-1 font-roboto  text-gray-500 sm:text-center md:text-start md:ml-2">
                         {{
                             job.entity?.name }}</p>
 
                     <div
-                        class="flex dark:text-gray-300 items-center text-[0.7rem] 2xl:text-[0.9rem] text-gray-800 font-semibold">
+                        class="flex p-2 dark:text-gray-300 items-center text-[0.7rem] 2xl:text-[0.9rem] text-gray-600 font-semibold">
                         <Icon icon="majesticons:beaker" class="h-5 w-5 mr-4 text-primary" />
                         {{ job.sub_sector?.sector.name || 'sector not specified' }}
                     </div>
                     <div
-                        class="flex dark:text-gray-300  items-center text-[0.7rem] 2xl:text-[0.9rem]  text-gray-800 font-semibold">
+                        class="flex p-2 dark:text-gray-300  items-center text-[0.7rem] 2xl:text-[0.9rem]  text-gray-600 font-semibold">
                         <Icon icon="material-symbols:arrow-top-left-rounded"
                             class="h-5 w-5 rotate-180 mr-4 text-primary" />
 
@@ -127,17 +139,17 @@ const calculatePercentage = (dataValue, min, max) => {
 
 
                     <div
-                        class="flex dark:text-gray-300  items-center text-[0.7rem] 2xl:text-[0.9rem] text-gray-800 font-bold">
+                        class="flex p-2 dark:text-gray-300  items-center text-[0.7rem] 2xl:text-[0.9rem] text-gray-600 font-bold">
                         <Icon icon="fa6-solid:unlock-keyhole" class="h-4 w-4 mr-4 text-primary" />
                         {{ job.years_of_experience }} - {{ job.max_years_of_experience || 'Any' }} years
                     </div>
                     <div
-                        class="flex dark:text-gray-300  items-center text-[0.7rem] 2xl:text-[0.9rem] text-gray-800 font-bold">
+                        class="flex p-2 dark:text-gray-300  items-center text-[0.7rem] 2xl:text-[0.9rem] text-gray-600 font-bold">
                         <Icon icon="akar-icons:people-group" class="h-4 w-4 mr-4 text-primary" />
                         {{ job.number_of_applicants }} Position
                     </div>
                     <div
-                        class="flex dark:text-gray-300  items-center text-[0.7rem] 2xl:text-[0.9rem] text-gray-800 font-bold">
+                        class="flex p-2 dark:text-gray-300  items-center text-[0.7rem] 2xl:text-[0.9rem] text-gray-600 font-bold">
                         <Icon icon="clarity:eye-show-solid" class="h-5 w-5 mr-4 text-primary" />
                         {{ formatViews(job.total_view_count) }} views
                     </div>
@@ -159,11 +171,15 @@ const calculatePercentage = (dataValue, min, max) => {
                 </div>
 
 
-                <div
+
+                <NuxtLink @click.prevent="openJobsModal"
                     class="flex items-center font-bold border 2xl:px-4 2xl:py-1  rounded-xl text-sm px-4 hover:bg-primary hover:text-white  border-primary text-primary ">
                     <Icon icon="heroicons-solid:share" class="h-4 w-8  " />
                     Share
-                </div>
+                </NuxtLink>
+                <!-- Modal Component -->
+                <MyShareModal :isOpen="isJobsModalOpen" :JobId="idJob" @close="closeJobsModal" />
+
 
 
             </div>
@@ -180,15 +196,13 @@ const calculatePercentage = (dataValue, min, max) => {
                         </button>
                     </Tab>
                 </TabList>
-
                 <!-- Tab Panels -->
                 <TabPanels class=" mt-4">
                     <TabPanel v-for="category in Object.keys(categories)" :key="category" class="">
                         <!-- Check if category is 'Post' and there is no data -->
                         <p class="  w-full  my-4"></p>
 
-                        <div v-if="category === 'Post'" class="
-                          ">
+                        <div v-if="category === 'Post'" class="w-full">
                             <h4
                                 class=" font-roboto dark:text-white items-start text-sm 2xl:text-[1rem] font-bold text-gray-700">
                                 Job
@@ -196,13 +210,9 @@ const calculatePercentage = (dataValue, min, max) => {
                             </h4>
                             <div class="flex flex-col items-end m-2 ">
 
-
-                                <p
-                                    class="wrapper text-[0.8rem] 2xl:text-[0.9rem]  dark:text-white text-gray-500 leading-relaxed font-roboto">
+                                <p class="prose xl:prose-sm max-w-none">
                                     <span v-html="job.description"></span>
                                 </p>
-
-
                                 <button
                                     class="sticky mb-4 items-end px-10 py-2 2xl:px-16 2x:py-3 bottom-4 bg-primary hover:bg-[#7fccc2] text-white font-bold  rounded hover:text-gray-700 text-[0.8rem] 2xl:text-[0.9rem]">
                                     Apply Now
@@ -211,7 +221,7 @@ const calculatePercentage = (dataValue, min, max) => {
 
                         </div>
 
-                        <div v-if="category === 'KPI'" class=" rounded">
+                        <div v-if="category === 'KPI'" class=" rounded ">
                             <h4 class="font-roboto ml-3 2xl:pt-4 text-[0.7rem] 2xl:text-[1rem] font-bold  text-primary">
                                 <Icon class="inline mr-1 h-3 w-4" icon="ri:error-warning-line" />
                                 About vacancies
@@ -292,30 +302,34 @@ const calculatePercentage = (dataValue, min, max) => {
                                   rounded-lg  p-6 h-48 w-52   2xl:w-60 2xl:h-52
                                   dark:shadow-green-600 ">
                                     <h2
-                                        class="text-[0.7rem] 2xl:text-[0.84rem] p-1 mb-2 font-bold  text-primary mx-auto">
+                                        class="text-[0.7rem] 2xl:text-[0.88rem] p-1 mb-2 font-bold  text-primary mx-auto">
                                         <Icon class="inline mr-1 h-3 w-4" icon="uil:calender" /> Vacancy
                                         relevance date
                                     </h2>
-                                    <p class="text-gray-800 py-2 text-[0.7rem] 2xl:text-[0.8rem]   dark:text-white">
-                                        Scraped on:<span class="text-gray-500 dark:text-white ">{{
+                                    <p
+                                        class="text-gray-800 py-2 text-[0.7rem] 2xl:text-[0.85rem] 2xl:ml-6 font-light   dark:text-white">
+                                        <span class="font-bold text-gray-600 dark:text-white">Scraped on:</span>
+                                        <span class="text-gray-500 2xl:text-[0.85rem]   dark:text-white ">{{
                                             formatTimestampToTime(job.scraped_at)
-                                            }}</span>
+                                        }}</span>
                                     </p>
                                     <p v-if="job.posted_on"
-                                        class="text-gray-800 py-2 text-[0.7rem] 2xl:text-[0.8rem] dark:text-white">
-
-                                        Vacancy Posted on:<span class="text-gray-500 dark:text-white ">{{
+                                        class="text-gray-800 py-2 text-[0.7rem] 2xl:text-[0.85rem] dark:text-white">
+                                        <span class="font-bold text-gray-800 dark:text-white">Vacancy Posted
+                                            on:</span>
+                                        <span class="text-gray-500 dark:text-white ">{{
                                             formatTimestampToTime(job.posted_on) }}</span>
                                     </p>
                                     <p v-else
                                         class="text-gray-800 py-2 text-[0.7rem] 2xl:text-[0.8rem] dark:text-white">
 
-                                        Vacancy Posted on:<span
-                                            class="text-gray-800 dark:text-white font-bold">---</span>
+                                        <span class="font-bold text-gray-600 dark:text-white">Vacancy Posted
+                                            on:</span><span class="text-gray-600 dark:text-white f">---</span>
                                     </p>
                                     <p class="text-gray-800 text-[0.7rem] 2xl:text-[0.8rem] py-2 dark:text-white">
-                                        Deadline: <span class="text-gray-500 dark:text-white">{{
-                                            formatTimestampToTime(job.deadline)
+                                        <span class="font-bold text-gray-600 dark:text-white">Deadline:</span> <span
+                                            class="text-gray-500 dark:text-white">{{
+                                                formatTimestampToTime(job.deadline)
                                             }}</span>
                                     </p>
                                 </div>
@@ -329,30 +343,37 @@ const calculatePercentage = (dataValue, min, max) => {
                                         How to apply
                                     </h2>
                                     <p class="text-gray-800 py-1 text-[0.7rem] 2xl:text-[0.8rem] dark:text-white">
-                                        Application
-                                        Method:<span class="text-gray-500 dark:text-white">{{
+                                        <span class="font-bold text-gray-600 dark:text-white"> Application
+                                            Method:</span>
+                                        <span class="text-gray-500 dark:text-white">{{
                                             job.application_method }}</span>
                                     </p>
-                                    <p class="text-gray-800 py-2 text-[0.7rem] 2xl:text-[0.8rem] dark:text-white">
-                                        Application
-                                        City: <span
-                                            class="text-[0.7rem] 2xl:text-[0.8rem] text-gray-700 dark:text-white"
+                                    <p
+                                        class="text-gray-800 2xl:ml-6  py-2 text-[0.7rem] 2xl:text-[0.8rem] dark:text-white">
+                                        <span class="font-bold text-gray-600 dark:text-white">Application
+                                            City:</span>
+                                        <span class="text-[0.7rem] 2xl:text-[0.8rem]  text-gray-700 dark:text-white"
                                             v-for="city in job.job_cities" :key="city">
 
                                             {{ city.city?.name }},
                                         </span>
                                     </p>
                                     <p v-if="job.entity.woreda_town"
-                                        class="text-gray-800 py-2 text-[0.7rem] 2xl:text-[0.8rem] dark:text-white">
-                                        subcity/woreda:<span class="text-gray-500 dark:text-white">{{
+                                        class="text-gray-800  text-[0.7rem] 2xl:text-[0.8rem] dark:text-white">
+                                        <span
+                                            class="font-bold 2xl:pr-12  text-gray-600 dark:text-white">subcity/woreda:</span>
+                                        <span class="text-gray-500 dark:text-white">{{
                                             job.entity.woreda_town }}</span>
                                     </p>
-                                    <p v-else
-                                        class="text-gray-800 py-2 text-[0.7rem] 2xl:text-[0.8rem] dark:text-white">
-                                        subcity/woreda:<span class="text-gray-500 dark:text-white">---</span>
+                                    <p v-else class="text-gray-800 x text-[0.7rem] 2xl:text-[0.8rem] dark:text-white">
+                                        <span
+                                            class="font-bold 2xl:pr-12  text-gray-600 dark:text-white">subcity/woreda:</span><span
+                                            class="text-gray-500 dark:text-white">---</span>
                                     </p>
                                     <p class="text-gray-800 py-2 text-[0.7rem] 2xl:text-[0.8rem] dark:text-white">
-                                        description :<span class="text-gray-500 dark:text-white">
+                                        <span class="font-bold 2xl:pr-12  text-gray-600 dark:text-white">description
+                                            :</span>
+                                        <span class="text-gray-500 dark:text-white">
                                             <Icon class="inline ml-2 h-4 w-4  text-blue-800"
                                                 icon="ion:arrow-up-right-box-outline" />
                                         </span>
@@ -366,7 +387,8 @@ const calculatePercentage = (dataValue, min, max) => {
                                         meta data
                                     </h2>
                                     <p class="text-gray-800 py-2 text-[0.7rem] 2xl:text-[0.8rem] dark:text-white">
-                                        Source:<span class="text-gray-500 dark:text-white">{{
+                                        <span class="font-bold text-gray-600 dark:text-white">Source :</span>
+                                        <span class="text-gray-500 dark:text-white">{{
                                             job.source }}</span>
                                     </p>
 
@@ -376,7 +398,7 @@ const calculatePercentage = (dataValue, min, max) => {
 
                                 <TabGroup>
                                     <p
-                                        class="ml-4 font-roboto text-xs 2xl:text-md 5 font-extrabold dark:text-white text-gray-800">
+                                        class="ml-4 font-roboto text-xs 2xl:text-[0.9rem] 5 font-extrabold dark:text-white text-gray-700">
                                         Summary:</p>
                                     <!-- Tab Headers -->
                                     <TabList class="flex space-x-0.5  p-1">
@@ -420,7 +442,7 @@ const calculatePercentage = (dataValue, min, max) => {
                         </div>
                         <div v-if="category === 'Analysis'" class="
                           ">
-                            <div class="border border-gray-400 rounded mt-6 p-4 ">
+                            <div class="border border-gray-400 rounded mt-6  ">
 
                                 <div>
                                     <h4
@@ -437,9 +459,9 @@ const calculatePercentage = (dataValue, min, max) => {
                                         Fitters / የኤሌክትሪካል መካኒኮችና ገጣጣሚዎች /fitters/ (7412)</p>
                                 </div>
 
-                                <div class="flex space-x-4 mt-4">
+                                <div class="flex  2xl:space-x-4 mt-4">
                                     <!-- First Card: Description and Exclusion -->
-                                    <div class="shadow-lg w-[300px] p-4">
+                                    <div class="shadow-lg w-[190px]  2xl:w-[300px] p-4">
                                         <h4 class="text-primary text-[0.7rem] 2xl:text-[0.9rem] font-bold mb-2">
                                             <Icon icon="material-symbols:description" class="w-4 h-4 inline mr-1" />
                                             Description
@@ -550,11 +572,11 @@ const calculatePercentage = (dataValue, min, max) => {
 
                                 <div class="flex  space-x-2  mt-4">
                                     <!-- First Card: Description and Exclusion -->
-                                    <div class="flex-1">
+                                    <div class="flex-col xl:flex-1">
                                         <p class="text-xs 2xl:text-[1rem] ml-3 text-primary font-bold ">
                                             <Icon icon="mdi:star" class="w-4 h-4 inline mr-1" />Skill
                                         </p>
-                                        <div class="shadow-lg max-h-[250px]   overflow-y-auto p-4  ">
+                                        <div class=" max-h-[250px]   overflow-y-auto p-4  ">
 
                                             <div v-for="(skill, index) in jobAnalysis.soc_2010.skills" :key="index"
                                                 class="">
@@ -594,7 +616,7 @@ const calculatePercentage = (dataValue, min, max) => {
                                             Technology
                                         </p>
 
-                                        <div class="shadow-lg max-h-[260px]  overflow-y-auto  p-4">
+                                        <div class="max-h-[260px]  overflow-y-auto  p-4">
                                             <div v-for="(tecno, index) in jobAnalysis.soc_2010.technology_skills"
                                                 :key="index">
                                                 <li
@@ -612,13 +634,13 @@ const calculatePercentage = (dataValue, min, max) => {
                                     </div>
 
                                     <!-- Second Card: Structure -->
-                                    <div class=" flex-1 ">
+                                    <div class="flex-col xl:flex-1 ">
                                         <div>
                                             <p class="text-xs 2xl:text-[1rem] ml-2 mb-1 text-primary font-bold ">
                                                 <Icon icon="game-icons:graduate-cap" class="w-4 h-4 inline mr-1" />
                                                 Knowledge
                                             </p>
-                                            <div class="shadow-lg max-h-[250px]  overflow-y-auto  p-4 ">
+                                            <div class=" max-h-[250px]  overflow-y-auto  p-4 ">
 
                                                 <div v-for="(knowledge, index) in jobAnalysis.soc_2010.knowledge"
                                                     :key="index" class="">
@@ -658,7 +680,7 @@ const calculatePercentage = (dataValue, min, max) => {
                                                 <Icon icon="mdi:star" class="w-4 h-4 inline mr-1" />Ability
                                             </p>
 
-                                            <div class="shadow-lg max-h-[250px]  overflow-y-auto  p-4  ">
+                                            <div class=" max-h-[250px]  overflow-y-auto  p-4  ">
 
                                                 <div v-for="(abilitie, index) in jobAnalysis.soc_2010.abilities"
                                                     :key="index" class="">
@@ -699,7 +721,7 @@ const calculatePercentage = (dataValue, min, max) => {
                                     </div>
 
                                     <!-- Third Card: Structure -->
-                                    <div class=" flex-1 ">
+                                    <div class="flex-col xl:flex-1">
 
                                         <div class="space-y-2 ">
                                             <div class="h-[230px] p-4">
@@ -715,14 +737,10 @@ const calculatePercentage = (dataValue, min, max) => {
                                             <div class="  p-2">
                                                 <p
                                                     class="text-[0.75rem] 2xl:text-[1rem]  ml-6  text-primary font-bold  mt-2 ">
-                                                    On
-                                                    the
-                                                    job
-                                                    you
-                                                    would:
+                                                    On the job you would:
                                                 </p>
 
-                                                <div class="shadow-lg max-h-[284px]  overflow-y-auto  p-4">
+                                                <div class=" max-h-[284px]  overflow-y-auto  p-4">
                                                     <div v-for="(taskkey, index) in jobAnalysis.soc_2010.task_statements"
                                                         :key="index" class="">
 
@@ -776,6 +794,7 @@ const calculatePercentage = (dataValue, min, max) => {
                         </div>
                     </TabPanel>
                 </TabPanels>
+
             </TabGroup>
         </div>
 
@@ -783,6 +802,14 @@ const calculatePercentage = (dataValue, min, max) => {
 </template>
 <style>
 .wrapper li {
-    @apply list-disc list-inside;
+    @apply list-disc;
+    padding: 8px;
+
+}
+
+.wrapper {
+    display: inline;
+    padding: 2px;
+    /* Ensure the wrapper itself is inline */
 }
 </style>

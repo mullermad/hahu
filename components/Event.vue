@@ -27,7 +27,7 @@ const props = defineProps({
 
 <template>
     <div
-        class="dark:bg-[#121a26] bg-white  flex flex-col items-left border border-transparent rounded-lg w-[20rem]  h-[32rem] 2xl:h-[39rem] 2xl:w-[28rem] transition-shadow hover:shadow-xl hover:border-green-500 overflow-hidden">
+        class="dark:bg-[#121a26] bg-white  flex flex-col items-left ring-1 ring-transparent rounded-lg w-[20rem]  h-[32rem] 2xl:h-[39rem] 2xl:w-[28rem]  hover:ring-primary overflow-hidden">
         <img :src="image" alt="Sector Image" class="w-full h-65 object-cover mb-6 mx-auto" />
         <p
             class="text-[0.7rem] 2xl:text-xs px-1 text-gray-800 dark:text-white bg-[#4aa39a]  mb-1 justify-center text-center ml-3 h-5 w-28 rounded-lg">

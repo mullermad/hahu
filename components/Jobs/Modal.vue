@@ -81,6 +81,7 @@ onResult((response) => {
 })
 
 
+
 </script>
 
 <template>
@@ -105,7 +106,7 @@ onResult((response) => {
                     </div>
 
                     <div class="flex items-left space-x-4 ">
-                        <NuxtLink
+                        <NuxtLink to="/jobs" @click="handleClose"
                             class="text-primary border border-primary hover:text-white 2xl:text-[0.9rem] hover:bg-primary text-[0.62rem] ml-24 lg:ml-2 mt-3 md:mt-4 p-1 md:p-2 lg:px-3 lg:py-1 xl:p-2 font-semibold flex transition duration-700 ease-in-out items-center  rounded-md">
                             View All
                             <span class="lg:justify-start">

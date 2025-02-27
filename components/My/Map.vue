@@ -18,9 +18,42 @@ const ClearSelectedRegion = () => {
 
 const emit = defineEmits(["update:modelValue"])
 
-watch(selectedRegion, () => {
-    emit("update:modelValue", selectedRegion.value)
-}, { deep: true })
+// Access Vue Router instance
+const router = useRouter();
+
+// Watch for changes in `selectedRegion`
+watch(
+    selectedRegion,
+    (newValue) => {
+        // Emit the updated value
+        emit("update:modelValue", newValue);
+
+        //  Log the new value
+        console.log("New selectedRegion:", newValue);
+
+        // Prepare query parameters
+        const currentQuery = { ...router.currentRoute.value.query };
+
+        // Remove any existing `rig` query parameters
+        Object.keys(currentQuery).forEach((key) => {
+            if (key === "rig") {
+                delete currentQuery[key];
+            }
+        });
+
+        // Add the selected region IDs as separate `rig` query parameters
+        newValue.forEach((region) => {
+            currentQuery[`rig`] = [...(currentQuery[`rig`] || []), region.id];
+        });
+
+        //  Log the updated query
+        console.log("Updated query parameters:", currentQuery);
+
+        // Update the route query without reloading the page
+        router.replace({ path: "/jobs", query: currentQuery });
+    },
+    { deep: true }
+);
 </script>
 
 <template>
@@ -170,7 +203,7 @@ watch(selectedRegion, () => {
                 </div>
 
                 <button @click.prevent="ClearSelectedRegion"
-                    class="w-fit  bg-white  text-[0.6rem]  text-primary border-primary border-2  px-2 rounded-full">
+                    class="w-fit  bg-white  text-[0.6rem] 2xl:text-[0.7rem]  text-primary border-primary border  px-2 rounded-full">
                     Clear
                     All </button>
             </div>
@@ -183,20 +216,23 @@ watch(selectedRegion, () => {
 <style scoped>
 /* Change color on hover */
 polygon:hover {
-    fill: rgb(145, 229, 194);
+    fill: #66c0b8;
+    ;
 }
+
+
 
 /* Change color on click (when active class is applied) */
 .active polygon {
-    fill: rgb(145, 229, 194);
+    fill: #84eee3;
 }
 
 /* Change color on click (when active class is applied) */
 .active path {
-    fill: rgb(145, 229, 194);
+    fill: #84eee3;
 }
 
 path:hover {
-    fill: rgb(145, 229, 194);
+    fill: #66c0b8;
 }
 </style>

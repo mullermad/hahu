@@ -1,15 +1,18 @@
 <script setup>
-import { ref } from 'vue'
 const route = useRoute();
+import { ref } from 'vue'
 import getSingle from "@/composables/jobs/get-single.js";
+import getJobs from "@/composables/jobs/getjobs.js";
 import jobInfoQuery from "@/queries/jobs/singleJob.gql";
+import relatedjobQuery from "@/queries/jobs/relatedJobs.gql";
 import getData from "@/composables/jobs/get.js";
 import positionQuery from "@/queries/position/positions.gql";
-import sectorQuery from "@/queries/jobs/sectors.gql"
-import cityQuery from "@/queries/jobs/cities.gql"
+import sectorQuery from "@/queries/jobs/sectors.gql";
+import cityQuery from "@/queries/jobs/cities.gql";
 import applicationImage from '@/assets/img/jobDetail.png';
 
 const job = ref([])
+const relatedJobs = ref([])
 const jobId = ref("");
 const search = ref("")
 const titleSearch = ref("")
@@ -247,7 +250,6 @@ onCityResult((response) => {
 });
 onMounted(() => {
     jobId.value = route.params.id;  // Correct way to assign to a ref
-    console.log("oooooooooooooooooooooooooo", jobId.value);  // Log immediately after setting the value
 });
 
 watch(
@@ -269,7 +271,6 @@ const {
     jobId.value
 );
 
-
 //Handle Job results
 onJobResult(({ data }) => {
     if (data && data?.job) {
@@ -277,6 +278,28 @@ onJobResult(({ data }) => {
 
     }
 });
+//querying  related jobs
+const {
+    onResult: onRelatedJobResult,
+    loading: loadingRelatedJob,
+    refetch: refetchRelatedJob,
+
+} = getJobs(relatedjobQuery, {
+    id: jobId.value,
+
+}
+);
+
+//Handle Job results
+onRelatedJobResult(({ data }) => {
+    if (data && data?.search_jobs) {
+        relatedJobs.value = data?.search_jobs;
+        console.log("related jobs wwwwwwwwwwwwwwwwwwww", relatedJobs.value);
+
+
+    }
+});
+
 //dynamically changing styles of slider background color
 watch(isChecked, (newValue) => {
     const primaryColor = newValue ? "#babebe" : "#009688";
@@ -303,13 +326,15 @@ watch(isChecked, (newValue) => {
                 <div class="p-4  ">
                     <!-- Toggle Button for Additional Filters -->
                     <div>
-                        <button @click="toggleFilters" class="flex justify-between items-center text-left ">
+                        <button @click="toggleFilters" class="flex justify-between items-center text-left ml-4 ">
 
-                            <Icon name="lets-icons:filter" class="w-4 h-4 mr-2" />
+                            <Icon name="lets-icons:filter" class="w-4 h-4 2xl:w-6 2xl:h-6 mr-2" />
 
-                            <h2 class="text-md font-bold dark:text-white text-gray-700"> Additional Filters</h2>
-                            <svg :class="{ 'rotate-180': showFilters }" class="ml-6 w-6 h-6 transition-transform"
-                                fill="#009688" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <h2 class="text-md 2xl:text-lg font-bold dark:text-white text-gray-700"> Additional Filters
+                            </h2>
+                            <svg :class="{ 'rotate-180': showFilters }"
+                                class="ml-6 2xl:ml-16 w-6 h-6 2xl:w-6 2xl:h-7 transition-transform" fill="#009688"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
                                     d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.25a.75.75 0 01.02-1.06z"
                                     clip-rule="evenodd" />
@@ -403,7 +428,7 @@ watch(isChecked, (newValue) => {
                 </div>
 
                 <!-- loadingJob and Job Display -->
-                <div class="flex justify-between">
+                <div class="flex flex-col lg:flex-row justify-between ">
                     <div>
                         <div v-if="loadingJob"
                             class="flex flex-col items-center justify-center h-screen text-center mx-auto px-4">
@@ -418,22 +443,35 @@ watch(isChecked, (newValue) => {
                     </div>
 
                     <!--right side card-->
-                    <div
-                        class="dark:bg-[#121a26] mt-6  flex-shrink-0 mr-5 py-4 px-4  bg-white flex flex-col items-center rounded-lg w-[260px] h-[350px] shadow-sm ">
-                        <img :src="applicationImage" alt="Sector Image" class="w-40 h-40 mb-6 mx-auto" />
+                    <div class="xl:px-2">
+                        <div
+                            class="dark:bg-[#121a26] mt-6  flex-shrink-0 mr-5 py-4 px-4  bg-white flex flex-col items-center rounded-lg w-[260px] h-[350px] shadow-sm ">
+                            <img :src="applicationImage" alt="Sector Image"
+                                class="w-40 h-40 2xl:w-52 2xl:h-52 mb-6 mx-auto" />
 
-                        <p class="text-gray-600 text-[0.6rem] dark:text-white text-left leading-relaxed mb-4">
-                            HaHuJobs the largest data-driven job matching and labor market information platform in
-                            Ethiopia. With various service deployments to address the Ethiopian labor market needs; we
-                            stand at the forefront of the local digital job matching industry.
+                            <p
+                                class="text-gray-600 text-[0.6rem] 2xl:text-[0.8rem] dark:text-white text-left leading-relaxed mb-4">
+                                HaHuJobs the largest data-driven job matching and labor market information platform in
+                                Ethiopia. With various service deployments to address the Ethiopian labor market needs;
+                                we
+                                stand at the forefront of the local digital job matching industry.
 
 
-                        </p>
-                        <div class="flex justify-end w-full">
-                            <button
-                                class="text-white text-[0.6rem] hover:text-[#82d3cb] bg-primary p-1 rounded font-bold flex items-center">
-                                Know more
-                            </button>
+                            </p>
+                            <div class="flex justify-end w-full">
+                                <button
+                                    class="text-white text-[0.6rem] hover:text-[#82d3cb] bg-primary p-1 rounded font-bold flex items-center">
+                                    Know more
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="my-2 mt-8  ">
+                            <h1 class="font-extrabold text-xl pb-3"> Related Jobs
+                            </h1>
+                            <div class="flex flex-col gap-y-4 mr-5">
+                                <MyRelatedJobs v-for="job in relatedJobs" :key="job.id" :job="job" />
+                            </div>
                         </div>
                     </div>
 

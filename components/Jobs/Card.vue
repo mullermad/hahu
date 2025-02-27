@@ -1,13 +1,11 @@
 <script setup>
-
+const isJobsModalOpen = ref(false)
 const props = defineProps({
     job: {
         type: Object,
         required: true,
     },
 });
-
-
 
 const formatSalary = (salary) => {
     return `Birr ${salary}/Mon`;
@@ -29,14 +27,23 @@ const formatTimeLeft = (deadline) => {
     return `${diffDays} days left`;
 };
 
+// Modal and menu functions
+const openJobsModal = () => {
+    isJobsModalOpen.value = true;
+    console.log("Modal Opened", isJobsModalOpen.value);
 
+};
+
+const closeJobsModal = () => {
+    isJobsModalOpen.value = false;
+};
 </script>
 
 <template>
-    <NuxtLink :to="`/jobs/${job.id}`">
+    <NuxtLink :to="`/jobs/${job.id}`" @click.stop>
 
         <div
-            class="bg-white dark:bg-[#121a26] p-2   rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 hover:border h-full border-primary ">
+            class="bg-white dark:bg-[#121a26] p-2   rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 hover:ring-1 h-full ring-primary ">
             <div class="relative p-4">
 
                 <div class="  left-1 2xl:text-[0.9rem] text-primary text-[0.6rem] font-medium px-3 py-1">
@@ -44,11 +51,11 @@ const formatTimeLeft = (deadline) => {
                     {{ formatTimeLeft(job.deadline) }}
                 </div>
                 <div class="absolute top-2 right-4 bottom-2 ">
-                    <button class="flex items-center border hover:bg-primary rounded border-primary text-xs 2xl:text-sm text-bold font-roboto px-2 2xl:px-4 py-1
+                    <NuxtLink to="/login" class="flex items-center border hover:bg-primary rounded border-primary text-xs 2xl:text-sm text-bold font-roboto px-2 2xl:px-4 py-1
                       text-primary  hover:text-gray-600 transition duration-200" aria-label="Save">
                         <Icon name="heroicons-outline:bookmark" class="mr-2 text-[0.8rem]   hover:text-black" />
                         Save
-                    </button>
+                    </NuxtLink>
                 </div>
                 <div class="flex flex-col  md:flex-row pt-8  md:space-x-0">
                     <!-- Left Section: Logo and Entity Name -->
@@ -90,7 +97,7 @@ const formatTimeLeft = (deadline) => {
                                 <ExampleComponent char="=" />
                             </template>
 
-                            <div v-if="job.entity.logo" class=" h-20 w-20 2xl:h-24 2xl:w-24  ml-36 md:ml-2">
+                            <div v-if="job.entity.logo" class=" h-20 w-20 2xl:h-24 2xl:w-24  md:ml-2">
                                 <img :src="job.entity.logo" :alt="job.entity.name" class="h-20 w-20 " />
                             </div>
                             <div v-else>
@@ -98,7 +105,7 @@ const formatTimeLeft = (deadline) => {
                                     alt="Default Logo" />
                             </div>
                         </VDropdown>
-                        <p class="text-left dark:text-white  2xl:font-lightbold text-gray-600 ml-36 md:ml-2 font-roboto text-xs 2xl:text-sm line-claim-2"
+                        <p class="text-left dark:text-white  2xl:font-lightbold text-gray-600 md:ml-2 font-roboto text-xs 2xl:text-sm line-claim-2"
                             style="max-width: 100px;">
                             {{ job.entity.name }}
                         </p>
@@ -109,7 +116,7 @@ const formatTimeLeft = (deadline) => {
 
                     <div class="space-y-2  px-1  ">
                         <h2
-                            class="text-xs 2xl:text-lg dark:text-white line-clamp-1 font-roboto font-bold text-gray-700 sm:text-center ml-36 md:ml-1">
+                            class="text-xs 2xl:text-lg dark:text-white line-clamp-1 font-roboto font-bold text-gray-700 sm:text-center md:ml-1">
                             {{
                                 job.title }}
                         </h2>
@@ -179,14 +186,17 @@ const formatTimeLeft = (deadline) => {
                 </div>
 
                 <!-- Bottom Section -->
-                <div class="px-4 py-2  flex justify-between items-center text-xs mt text-gray-500">
+                <div class=" py-2  flex justify-between items-center text-xs mt text-gray-500">
                     <span class="2xl:text-lg">
-                        <Icon name="bx:show" class="h-4 w-4 " />
+                        <Icon name="bx:show" class="h-4 w-4 2xl:w-5 2xl:h-5 " />
                         {{ formatViews(job.total_view_count) }} views
                     </span>
-                    <span>
-                        <Icon name="heroicons-solid:share" class="h-5 w-5 2xl:w-6 2xl:h-6" />
+
+
+                    <span @click.stop.prevent="openJobsModal">
+                        <Icon name="mdi:share-variant-outline" class="h-5 w-5 2xl:w-6 2xl:h-6 hover:bg-primary" />
                     </span>
+                    <MyShareModal :isOpen="isJobsModalOpen" @close="closeJobsModal" />
                 </div>
             </div>
         </div>

@@ -32,7 +32,7 @@ watch(searchQuery, () => {
 const selectItem = (item) => {
     selectedItems.value = item;
     emit('update:modelValue', selectedItems.value);
-    searchQuery.value = '';
+
     showDropdown.value = false;
 };
 

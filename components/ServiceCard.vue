@@ -20,7 +20,7 @@ const props = defineProps({
 
 <template>
     <div
-        class="dark:bg-[#121a26] bg-white flex flex-col items-center border border-transparent rounded-lg shadow-sm p-5 w-[20rem] m-3 h-[25rem] 2xl:w-[25rem] 2xl:h-[34rem] transition-shadow hover:shadow-xl hover:border-green-500">
+        class="dark:bg-[#121a26] bg-white flex flex-col items-center ring-1 ring-transparent rounded-lg p-5 w-[20rem] m-3 h-[25rem] 2xl:w-[25rem] 2xl:h-[34rem]  hover:ring-primary">
 
 
         <!-- Content Section (Text pushed to the bottom) -->

@@ -5,6 +5,7 @@
         <AuthImage />
         <!-- right half  login forms -->
 
+
         <div
             class="min-h-screen overflow-y-auto w-full lg:w-1/2 flex relative py-6 justify-center bg-white dark:bg-[#011812] px-4  sm:px-6 lg:px-8 ">
 
@@ -29,9 +30,6 @@
                 <div class="">
 
 
-
-
-
                 </div>
                 <!-- Dot image positioned on the left side and made small -->
                 <div class="absolute  bottom-0 right-0 ">
@@ -41,7 +39,6 @@
 
 
         </div>
-
 
 
     </div>

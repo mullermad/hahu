@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import JobsQuery from "@/queries/jobs/jobs.gql";
 import positionQuery from "@/queries/position/positions.gql";
-import getJobs from "@/composables/jobs/getJobs.js";
+import getJobs from "@/composables/jobs/getjobs.js";
 import getData from "@/composables/jobs/get.js";
 import sectorQuery from "@/queries/jobs/sectors.gql"
 import cityQuery from "@/queries/jobs/cities.gql"
@@ -10,6 +10,8 @@ import job_applicationImage from '@/assets/img/filterimages.png';
 
 //  reactive varables
 const route = useRoute();
+const router = useRouter();
+
 const search = ref("")
 const titleSearch = ref("")
 const searchResult = ref("")
@@ -178,9 +180,41 @@ const toggleCheck = () => {
     isChecked.value = !isChecked.value;
 };
 
+watch(
+    () => route.query.search,
+    (newSearchTerm) => {
+        // If there's a search term in the query, update the input field
+        if (newSearchTerm) {
+            titleSearch.value = newSearchTerm;
+            searchResult.value = newSearchTerm;
+        } else {
+            // Clear the result when search term is removed
+            titleSearch.value = "";
+            searchResult.value = "";
+        }
+    },
+    { immediate: true }
+);
+
+// Function to handle the search query update
 const searchDone = () => {
-    searchResult.value = titleSearch.value
-}
+    if (titleSearch.value.trim()) {
+        // Update the query parameters in the URL without reloading the page
+        router.push({ path: route.path, query: { ...route.query, search: titleSearch.value } });
+        searchResult.value = titleSearch.value; // Simulate fetching results
+    }
+};
+
+// Function to clear the search term and update the query parameters
+const clearSearch = () => {
+    titleSearch.value = ""; // Clear the input field
+    const query = { ...route.query }; // Get the current query params
+    delete query.search; // Remove search query from URL
+
+    // Update the query parameters in the URL without reloading the page
+    router.push({ path: route.path, query });
+    searchResult.value = ""; // Clear search results
+};
 
 const UpdateSearchTerm = (v) => {
     search.value = v;
@@ -210,8 +244,6 @@ const {
     limit: limit,
     offset: offset,
     filter: filterJob,
-
-
 });
 
 
@@ -287,6 +319,26 @@ onCityResult((response) => {
 });
 
 
+// Watch for changes in yearsofexperiancerange and isChecked
+watch([yearsofexperiancerange, isChecked], () => {
+    const query = { ...route.query };
+
+    // If the checkbox is checked (max_yoe_gt = true), remove min_yoe and max_yoe from the query
+    if (isChecked.value) {
+        delete query.min_yoe;
+        delete query.max_yoe;
+        query.max_yoe_gt = true;
+    } else {
+        // Update the query parameters for min and max years of experience
+        query.min_yoe = yearsofexperiancerange.value[0];
+        query.max_yoe = yearsofexperiancerange.value[1];
+        delete query.max_yoe_gt; // Remove max_yoe_gt if unchecked
+    }
+
+    // Update the router with the new query parameters
+    router.push({ path: route.path, query });
+});
+
 
 </script>
 
@@ -304,7 +356,7 @@ onCityResult((response) => {
                             <h2 class="text-md 2xl:text-lg font-bold dark:text-white text-gray-700"> Additional Filters
                             </h2>
                             <svg :class="{ 'rotate-180': showFilters }"
-                                class="ml-6 2xl:ml-16 w-6 h-6 2xl:w-7 2xl:h-8 transition-transform" fill="#009688"
+                                class="ml-6 2xl:ml-16 w-6 h-6 2xl:w-6 2xl:h-7 transition-transform" fill="#009688"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
                                     d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.25a.75.75 0 01.02-1.06z"
@@ -355,10 +407,11 @@ onCityResult((response) => {
 
                 <!--left side card-->
                 <div
-                    class="dark:bg-[#121a26] ml-5 py-4  bg-white flex flex-col items-center rounded-lg w-[220px] h-[400px] shadow-sm px-2">
+                    class="dark:bg-[#121a26] ml-5 py-4 2xl:py-6 bg-white flex flex-col items-center rounded-lg w-[220px] h-[400px] 2xl:h-[420px] shadow-sm px-2">
                     <img :src="job_applicationImage" alt="Sector Image" class="w-40 h-40 mb-6 mx-auto" />
 
-                    <p class="text-gray-600 text-[0.6rem] dark:text-white text-left leading-relaxed mb-4">
+                    <p
+                        class="text-gray-600 text-[0.6rem] 2xl:text-[0.8rem] dark:text-white text-left leading-relaxed mb-4">
                         Provides human resources and related services starting from job vacancy announcements,
                         recruitment, all the way to human resources management until termination. This
                         deployment also
@@ -367,9 +420,9 @@ onCityResult((response) => {
                         foreign
                         employment agencies.
                     </p>
-                    <div class="flex justify-end w-full">
+                    <div class="flex justify-end w-full ">
                         <button
-                            class="text-white text-[0.6rem] hover:text-[#82d3cb] bg-primary p-1 rounded font-bold flex items-center">
+                            class="text-white text-[0.6rem]  hover:text-[#82d3cb] bg-primary p-1 rounded font-bold flex items-center">
                             Know more
                         </button>
                     </div>
@@ -381,17 +434,26 @@ onCityResult((response) => {
                 <!-- Search and Filters Row -->
                 <div class=" sticky   mt-1 z-10  dark:bg-[#011812] px-4  top-14   border-gray-200 dark:border-gray-700">
                     <div class="flex flex-col items-center  justify-between lg:flex-row">
-                        <!-- Small Search Field -->
-                        <form @submit.prevent="searchDone" class="flex-none   w-full lg:w-1/3 mb-2   lg:mr-2 relative">
+
+                        <form @submit.prevent="searchDone" class="flex-none w-full lg:w-1/3 mb-2 lg:mr-2 relative">
                             <input type="text" v-model="titleSearch" placeholder="Search"
-                                class="hover:border-primary 2xl:py-3  w-full mt-2 dark:text-white text-sm px-4 py-1 placeholder-gray-600 bg-white dark:bg-slate-600 border text-gray-600 dark:placeholder-white rounded-l-md  focus:ring-primary focus:border-primary focus:outline-none" />
-                            <Icon name="material-symbols:search-rounded" size="24"
-                                class="absolute right-2   top-2/3 transform -translate-y-1/2 text-gray-400 hover:text-primary cursor-pointer"
-                                aria-label="Search" />
+                                class="hover:border-primary 2xl:py-3 w-full mt-2 dark:text-white text-sm px-4 py-1 placeholder-gray-600 bg-white dark:bg-slate-600 border text-gray-600 dark:placeholder-white rounded-l-md focus:ring-primary focus:border-primary focus:outline-none pr-10" />
+
+                            <!-- X Icon for clearing the search term -->
+                            <span v-if="titleSearch"
+                                class="ml-2 dark:text-white cursor-pointer text-gray-500 absolute right-2 top-1/2 transform -translate-y-1/2"
+                                @click.stop="clearSearch">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </span>
+                            <!-- Search Icon -->
+                            <Icon v-else name="material-symbols:search-rounded" size="24"
+                                class="absolute right-4 top-2/3 transform -translate-y-1/2 text-gray-400 hover:text-primary cursor-pointer"
+                                aria-label="Search" @click="searchDone" />
+
                         </form>
-
-
-
 
                         <!--  Position Filter -->
                         <div class="flex-grow  w-full  lg:w-1/6  mb-4 lg:mb-0">
@@ -405,7 +467,6 @@ onCityResult((response) => {
                         <div class="flex-grow w-full  lg:w-1/5 mb-4  lg:mb-0">
                             <MyTextfeild @updateSearch="UpdateSearchTerm" :items="Sectors" placeholder="Select Sector"
                                 v-model="selectedSector" @update:modelValue="selectedSector = $event" />
-
                         </div>
 
                         <!--  City Filter -->
@@ -417,9 +478,10 @@ onCityResult((response) => {
                 </div>
 
                 <!-- Job Count -->
-                <h5 class="text-xl ml-4 font-bold text-gray-700 dark:text-white p-4">
-                    Showing <span>{{ jobs.length }}</span> of <span>{{ jobs.length }}</span> posts
-                </h5>
+                <h1 class="text-xl ml-4 font-bold text-gray-700 dark:text-white p-4">
+                    Showing <span>{{ jobs.length }}</span> of
+                    <span>{{ jobs.length }}</span> posts
+                </h1>
 
                 <!-- loadingJob and Job Display -->
                 <div v-if="loadingJob"

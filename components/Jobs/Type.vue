@@ -1,5 +1,6 @@
 <script setup>
 const selectedJobType = ref([])
+const router = useRouter();
 
 const emit = defineEmits(["update:modelValue"])
 
@@ -7,6 +8,38 @@ const emit = defineEmits(["update:modelValue"])
 //     emit("update:modelValue", selectedJobType.value)
 // }, { deep: true })
 emit("update:modelValue", selectedJobType.value);
+
+// Watch for changes in `selectedJobType`
+watch(
+    selectedJobType,
+    (newValue) => {
+        // Emit the updated value
+        emit("update:modelValue", newValue);
+
+        //  Log the new value
+        console.log("New selectedJobType:", newValue);
+
+        // Prepare query parameters
+        const currentQuery = { ...router.currentRoute.value.query };
+
+        // Remove any existing `type` query parameters
+        Object.keys(currentQuery).forEach((key) => {
+            if (key === "type") {
+                delete currentQuery[key];
+            }
+        });
+
+        // Add the selected job types as separate `type` query parameters
+        newValue.forEach((type) => {
+            currentQuery[`type`] = [...(currentQuery[`type`] || []), type];
+        });
+
+
+        // Update the route query without reloading the page
+        router.replace({ path: "/jobs", query: currentQuery });
+    },
+    { deep: true }
+);
 
 const setSelectedJobType = (type) => {
     const index = selectedJobType.value.findIndex((i) => i == type)
@@ -22,7 +55,7 @@ const setSelectedJobType = (type) => {
         <label class="block text-sm text-gray-700 dark:text-white mb-2 2xl:text-lg font-lightbold ml-1">Type</label>
         <div class="flex flex-wrap gap-2">
             <button @click="setSelectedJobType('bid')"
-                :class="['flex items-center px-4 py-1 text-gray-700 rounded-lg border text-[0.65rem] hover:bg-green-200 border-primary dark:text-white']"
+                :class="['flex items-center px-2 py-1 text-gray-700 rounded-xl border text-[0.65rem] hover:bg-primary4 border-primary dark:text-white']"
                 :style="selectedJobType.includes('bid') ? { backgroundColor: '#009688' } : {}">
 
                 <span class="mr-1 xl:text-sm">Bid</span>
@@ -33,7 +66,7 @@ const setSelectedJobType = (type) => {
 
 
             <button @click="setSelectedJobType('contract')"
-                :class="['flex items-center px-4 py-1 text-gray-700 rounded-lg border text-[0.65rem] hover:bg-green-200 border-primary dark:text-white']"
+                :class="['flex items-center px-2 py-1 text-gray-700 rounded-xl border text-[0.65rem] hover:bg-primary4 border-primary dark:text-white']"
                 :style="selectedJobType.includes('contract') ? { backgroundColor: '#009688' } : {}">
 
                 <span class="mr-1 xl:text-sm">Contract</span>
@@ -41,7 +74,7 @@ const setSelectedJobType = (type) => {
             </button>
 
             <button @click="setSelectedJobType('full_time')"
-                :class="['flex items-center px-4 py-1 text-gray-700 rounded-lg border text-[0.65rem] hover:bg-green-200 border-primary dark:text-white']"
+                :class="['flex items-center px-2 py-1 text-gray-700 rounded-xl border text-[0.65rem] hover:bg-primary4 border-primary dark:text-white']"
                 :style="selectedJobType.includes('full_time') ? { backgroundColor: '#009688' } : {}">
 
 
@@ -52,7 +85,7 @@ const setSelectedJobType = (type) => {
 
             </button>
             <button @click="setSelectedJobType('internship')"
-                :class="['flex items-center px-4 py-1 text-gray-700 rounded-lg border text-[0.65rem] hover:bg-green-200 border-primary dark:text-white']"
+                :class="['flex items-center px-2 py-1 text-gray-700 rounded-xl border text-[0.65rem] hover:bg-primary4 border-primary dark:text-white']"
                 :style="selectedJobType.includes('internship') ? { backgroundColor: '#009688' } : {}">
 
 
@@ -62,7 +95,7 @@ const setSelectedJobType = (type) => {
 
             </button>
             <button @click="setSelectedJobType('part_time')"
-                :class="['flex items-center px-4 py-1 text-gray-700 rounded-lg border text-[0.65rem] hover:bg-green-200 border-primary dark:text-white']"
+                :class="['flex items-center px-2 py-1 text-gray-700 rounded-xl border text-[0.65rem] hover:bg-primary4 border-primary dark:text-white']"
                 :style="selectedJobType.includes('part_time') ? { backgroundColor: '#009688' } : {}">
 
                 <span class="mr-1 xl:text-sm"> Part Time

@@ -20,6 +20,8 @@ module.exports = {
         "scrollbar-thumb": "green", // Custom scrollbar thumb color
         "scrollbar-track": "#009688", // Custom scrollbar track color
         primary: "#009688",
+        primary4: "#B3E0DB",
+        selection: "#009688",
       },
       fontFamily: {
         roboto: ["Roboto"],

@@ -1,6 +1,20 @@
 <script setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router'; // Importing useRouter
 
+const searchTerm = ref("");
 
+const router = useRouter();
+
+// Handle form submission 
+const onSearchSubmit = (event) => {
+    if (searchTerm.value) {
+        // Update the URL to reflect the search term as a query parameter
+        router.push({ path: '/jobs', query: { search: searchTerm.value } });
+    } else {
+        router.push({ path: '/jobs' });
+    }
+};
 </script>
 
 <template>
@@ -23,17 +37,24 @@
             <p class="dark:text-white text-md  font-bold py-1  text-gray-700 mb-4  ">Find career
                 opportunities in Ethiopia</p>
 
-            <div class="flex justify-center mb-4">
-                <input type="text" placeholder="Job title, city or keyword..."
-                    class=" focus:border-[rgb(32,134,124)] border dark:placeholder-white text-gray-500  rounded-l-md px-1 py-2 2xl:py-3 2xl:px-2 w-1/5  2xl:w-1/4  focus:w-1/4 2xl:focus:w-1/3 focus:border  focus:outline-none text-center placeholder-gray-500  font-semibold text-sm 2xl:text-lg  dark:text-white" />
-                <button class="ml-1 bg-[rgb(32,134,124)] text-white rounded-r-md px-5  flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2">
-                        <circle cx="10.5" cy="11.5" r="8.5"></circle>
-                        <line x1="21" y1="21" x2="15.8" y2="15.8"></line>
-                    </svg>
-                    <span class=" font-bold text-[0.8rem]">Find Job</span>
-                </button>
+            <div>
+                <form @submit.prevent="onSearchSubmit" class="flex justify-center mb-4">
+                    <input type="text" v-model="searchTerm" placeholder="Job title, city or keyword..."
+                        class="hover:border-[rgb(32,134,124)]  border border-gray-300 dark:placeholder-white text-gray-500 rounded-l-md px-1 py-2 2xl:py-3 2xl:px-2 w-1/5 2xl:w-1/4 focus:w-1/4 2xl:focus:w-1/3  focus:border focus:outline-none text-center placeholder-gray-500 font-semibold text-sm 2xl:text-lg dark:text-white transition-all duration-1000 focus:transition-all ease-in-out focus:duration-1000" />
+                    <button type="submit"
+                        class="ml-1 bg-[rgb(32,134,124)] text-white rounded-r-md px-5 flex items-center whitespace-nowrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2">
+                            <circle cx="10.5" cy="11.5" r="8.5"></circle>
+                            <line x1="21" y1="21" x2="15.8" y2="15.8"></line>
+                        </svg>
+                        <span class="font-bold text-[0.8rem] 2xl:font-extrabold 2xl:text-[1rem]">Find Job</span>
+                    </button>
+                </form>
+
+
+
+
             </div>
 
             <div class="flex justify-center space-x-14 text-gray-700 ">

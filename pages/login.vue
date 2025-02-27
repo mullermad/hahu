@@ -24,7 +24,7 @@ const handleSubmit = () => {
 
 <template>
 
-    <div>
+    <div class="2xl:py-32">
         <form @submit.prevent="handleSubmit" class=" ">
             <div class="space-y-6 ">
                 <div class=" pb-10">

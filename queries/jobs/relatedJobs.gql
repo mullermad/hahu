@@ -1,0 +1,44 @@
+query ($filter: jobs_bool_exp!) {
+  search_jobs(
+    where: $filter
+    order_by: [{ priority: desc_nulls_last }, { deadline: asc }]
+    limit: 6
+  ) {
+    max_years_of_experience
+    years_of_experience
+    title
+    total_web_view_count
+    telegram_view_count
+    total_view_count
+    type
+    id
+    deadline
+    number_of_applicants
+    position {
+      name
+    }
+    entity {
+      id
+      logo
+      name
+    }
+    job_cities {
+      city {
+        name
+      }
+    }
+    area {
+      address
+      name
+    }
+    sub_sector {
+      id
+      name
+      icon_class
+      sector {
+        id
+        name
+      }
+    }
+  }
+}
